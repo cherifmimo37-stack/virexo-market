@@ -1,1 +1,12 @@
-
+{
+  "name": "virexo-market",
+  "version": "2.0.0",
+  "description": "Virexo Market - Marketplace Algeria",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

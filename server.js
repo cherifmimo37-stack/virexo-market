@@ -1,267 +1,607 @@
 const express = require("express");
-const path = require("path");
 const fs = require("fs");
+const path = require("path");
 
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-const DATABASE_FILE = path.join(__dirname, "database.json");
+const DB_FILE = path.join(
+    __dirname,
+    "database.json"
+);
+
+
+// ===============================
+// MIDDLEWARE
+// ===============================
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(
+    express.static(
+        path.join(__dirname, "public")
+    )
+);
 
 
-// ================= DATABASE =================
+// ===============================
+// DATABASE
+// ===============================
 
 function readDatabase() {
-  try {
-    if (!fs.existsSync(DATABASE_FILE)) {
-      return {
-        users: [],
-        products: []
-      };
+
+    try {
+
+        if (!fs.existsSync(DB_FILE)) {
+
+            return {
+                settings: {
+                    appName: "TABIBK",
+                    whatsapp: "213671995831"
+                },
+                doctors: [],
+                bookings: [],
+                admins: []
+            };
+
+        }
+
+        const data =
+            fs.readFileSync(
+                DB_FILE,
+                "utf8"
+            );
+
+        return JSON.parse(data);
+
     }
 
-    const data = fs.readFileSync(
-      DATABASE_FILE,
-      "utf8"
-    );
+    catch (error) {
 
-    return JSON.parse(data);
+        console.error(
+            "Database error:",
+            error
+        );
 
-  } catch (error) {
+        return {
+            settings: {},
+            doctors: [],
+            bookings: [],
+            admins: []
+        };
 
-    console.error("Database read error:", error);
+    }
 
-    return {
-      users: [],
-      products: []
-    };
-  }
 }
 
 
 function saveDatabase(database) {
 
-  fs.writeFileSync(
-    DATABASE_FILE,
-    JSON.stringify(database, null, 2),
-    "utf8"
-  );
+    fs.writeFileSync(
+
+        DB_FILE,
+
+        JSON.stringify(
+            database,
+            null,
+            2
+        ),
+
+        "utf8"
+
+    );
 
 }
 
 
-// ================= HOME =================
+// ===============================
+// TEST
+// ===============================
 
-app.get("/", (req, res) => {
+app.get(
+    "/api/health",
+    (req, res) => {
 
-  res.sendFile(
-    path.join(
-      __dirname,
-      "public",
-      "index.html"
-    )
-  );
+        res.json({
 
-});
+            success: true,
 
+            message:
+                "TABIBK V3 Server يعمل بنجاح 🚀"
 
-// ================= API STATUS =================
+        });
 
-app.get("/api/status", (req, res) => {
+    }
+);
 
-  res.json({
-    success: true,
-    message: "Virexo Market API تعمل بنجاح 🚀",
-    version: "2.0.0"
-  });
 
-});
+// ===============================
+// GET DOCTORS
+// ===============================
 
+app.get(
+    "/api/doctors",
+    (req, res) => {
 
-// ================= GET PRODUCTS =================
+        const database =
+            readDatabase();
 
-app.get("/api/products", (req, res) => {
+        const doctors =
+            database.doctors
+            .filter(
+                doctor =>
+                    doctor.active !== false
+            )
+            .map(
+                doctor => ({
 
-  const database = readDatabase();
+                    id: doctor.id,
 
-  res.json({
-    success: true,
-    products: database.products
-  });
+                    name: doctor.name,
 
-});
+                    specialty:
+                        doctor.specialty,
 
+                    phone:
+                        doctor.phone,
 
-// ================= ADD PRODUCT =================
+                    clinic:
+                        doctor.clinic,
 
-app.post("/api/products", (req, res) => {
+                    experience:
+                        doctor.experience,
 
-  const database = readDatabase();
+                    rating:
+                        doctor.rating
 
-  const {
-    name,
-    price,
-    category,
-    wilaya,
-    commune,
-    seller,
-    phone,
-    description,
-    image
-  } = req.body;
+                })
+            );
 
+        res.json({
 
-  if (!name || !price || !category || !wilaya || !seller || !phone) {
+            success: true,
 
-    return res.status(400).json({
+            doctors: doctors
 
-      success: false,
+        });
 
-      message: "يرجى ملء جميع المعلومات المطلوبة"
+    }
+);
 
-    });
 
-  }
+// ===============================
+// CREATE BOOKING
+// ===============================
 
+app.post(
+    "/api/bookings",
+    (req, res) => {
 
-  const product = {
+        const {
 
-    id: Date.now(),
+            patientName,
 
-    name: String(name).trim(),
+            patientPhone,
 
-    price: Number(price),
+            specialty,
 
-    category: String(category).trim(),
+            doctorId,
 
-    wilaya: String(wilaya).trim(),
+            date,
 
-    commune: String(commune || "").trim(),
+            time,
 
-    seller: String(seller).trim(),
+            type,
 
-    phone: String(phone).trim(),
+            notes
 
-    description: String(description || "").trim(),
+        } = req.body;
 
-    image: image || "",
 
-    date: Date.now()
+        // =========================
+        // VALIDATION
+        // =========================
 
-  };
+        if (
 
+            !patientName ||
+            !patientPhone ||
+            !specialty ||
+            !doctorId ||
+            !date ||
+            !time
 
-  database.products.unshift(product);
+        ) {
 
-  saveDatabase(database);
+            return res.status(400).json({
 
+                success: false,
 
-  res.status(201).json({
+                message:
+                    "جميع معلومات الحجز المطلوبة ضرورية"
 
-    success: true,
+            });
 
-    message: "تم نشر السلعة بنجاح 🎉",
+        }
 
-    product
 
-  });
+        const database =
+            readDatabase();
 
-});
 
+        // =========================
+        // FIND DOCTOR
+        // =========================
 
-// ================= GET SINGLE PRODUCT =================
+        const doctor =
+            database.doctors.find(
+                d =>
+                    Number(d.id) ===
+                    Number(doctorId)
+            );
 
-app.get("/api/products/:id", (req, res) => {
 
-  const database = readDatabase();
+        if (!doctor) {
 
-  const id = Number(req.params.id);
+            return res.status(404).json({
 
-  const product =
-    database.products.find(
-      item => item.id === id
-    );
+                success: false,
 
+                message:
+                    "الطبيب غير موجود"
 
-  if (!product) {
+            });
 
-    return res.status(404).json({
+        }
 
-      success: false,
 
-      message: "الإعلان غير موجود"
+        // =========================
+        // BOOKING NUMBER
+        // =========================
 
-    });
+        const bookingNumber =
+            "TAB-" +
+            Math.floor(
+                100000 +
+                Math.random() *
+                900000
+            );
 
-  }
 
+        // =========================
+        // BOOKING
+        // =========================
 
-  res.json({
+        const booking = {
 
-    success: true,
+            id: bookingNumber,
 
-    product
+            patientName:
+                patientName.trim(),
 
-  });
+            patientPhone:
+                patientPhone.trim(),
 
-});
+            specialty,
 
+            doctorId:
+                Number(doctorId),
 
-// ================= DELETE PRODUCT =================
+            doctorName:
+                doctor.name,
 
-app.delete("/api/products/:id", (req, res) => {
+            clinic:
+                doctor.clinic,
 
-  const database = readDatabase();
+            date,
 
-  const id = Number(req.params.id);
+            time,
 
+            type:
+                type || "فحص واستشارة",
 
-  const oldLength =
-    database.products.length;
+            notes:
+                notes || "",
 
+            status:
+                "pending",
 
-  database.products =
-    database.products.filter(
-      item => item.id !== id
-    );
+            createdAt:
+                new Date().toISOString()
 
+        };
 
-  if (
-    database.products.length === oldLength
-  ) {
 
-    return res.status(404).json({
+        database.bookings.push(
+            booking
+        );
 
-      success: false,
 
-      message: "الإعلان غير موجود"
+        saveDatabase(
+            database
+        );
 
-    });
 
-  }
+        // =========================
+        // RESPONSE
+        // =========================
 
+        res.status(201).json({
 
-  saveDatabase(database);
+            success: true,
 
+            message:
+                "تم إنشاء الحجز بنجاح",
 
-  res.json({
+            booking
 
-    success: true,
+        });
 
-    message: "تم حذف الإعلان"
+    }
+);
 
-  });
 
-});
+// ===============================
+// GET BOOKING
+// ===============================
 
+app.get(
+    "/api/bookings/:id",
+    (req, res) => {
 
-// ================= START SERVER =================
+        const database =
+            readDatabase();
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Virexo Market running on port ${PORT}`);
-});
+        const booking =
+            database.bookings.find(
+                b =>
+                    b.id ===
+                    req.params.id
+            );
+
+
+        if (!booking) {
+
+            return res.status(404).json({
+
+                success: false,
+
+                message:
+                    "الحجز غير موجود"
+
+            });
+
+        }
+
+
+        res.json({
+
+            success: true,
+
+            booking
+
+        });
+
+    }
+);
+
+
+// ===============================
+// GET ALL BOOKINGS
+// ===============================
+
+app.get(
+    "/api/bookings",
+    (req, res) => {
+
+        const database =
+            readDatabase();
+
+        res.json({
+
+            success: true,
+
+            bookings:
+                database.bookings
+
+        });
+
+    }
+);
+
+
+// ===============================
+// DOCTOR ACCEPT BOOKING
+// ===============================
+
+app.post(
+    "/api/bookings/:id/accept",
+    (req, res) => {
+
+        const database =
+            readDatabase();
+
+        const booking =
+            database.bookings.find(
+                b =>
+                    b.id ===
+                    req.params.id
+            );
+
+
+        if (!booking) {
+
+            return res.status(404).json({
+
+                success: false,
+
+                message:
+                    "الحجز غير موجود"
+
+            });
+
+        }
+
+
+        booking.status =
+            "accepted";
+
+        booking.updatedAt =
+            new Date().toISOString();
+
+
+        saveDatabase(
+            database
+        );
+
+
+        res.json({
+
+            success: true,
+
+            message:
+                "تم قبول الموعد ✅",
+
+            booking
+
+        });
+
+    }
+);
+
+
+// ===============================
+// DOCTOR REJECT BOOKING
+// ===============================
+
+app.post(
+    "/api/bookings/:id/reject",
+    (req, res) => {
+
+        const database =
+            readDatabase();
+
+        const booking =
+            database.bookings.find(
+                b =>
+                    b.id ===
+                    req.params.id
+            );
+
+
+        if (!booking) {
+
+            return res.status(404).json({
+
+                success: false,
+
+                message:
+                    "الحجز غير موجود"
+
+            });
+
+        }
+
+
+        booking.status =
+            "rejected";
+
+        booking.updatedAt =
+            new Date().toISOString();
+
+
+        saveDatabase(
+            database
+        );
+
+
+        res.json({
+
+            success: true,
+
+            message:
+                "تم رفض الموعد",
+
+            booking
+
+        });
+
+    }
+);
+
+
+// ===============================
+// CANCEL BOOKING
+// ===============================
+
+app.post(
+    "/api/bookings/:id/cancel",
+    (req, res) => {
+
+        const database =
+            readDatabase();
+
+        const booking =
+            database.bookings.find(
+                b =>
+                    b.id ===
+                    req.params.id
+            );
+
+
+        if (!booking) {
+
+            return res.status(404).json({
+
+                success: false,
+
+                message:
+                    "الحجز غير موجود"
+
+            });
+
+        }
+
+
+        booking.status =
+            "cancelled";
+
+        booking.updatedAt =
+            new Date().toISOString();
+
+
+        saveDatabase(
+            database
+        );
+
+
+        res.json({
+
+            success: true,
+
+            message:
+                "تم إلغاء الحجز",
+
+            booking
+
+        });
+
+    }
+);
+
+
+// ===============================
+// SERVER
+// ===============================
+
+app.listen(
+    PORT,
+    () => {
+
+        console.log(
+            `TABIBK V3 running on port ${PORT}`
+        );
+
+    }
+);

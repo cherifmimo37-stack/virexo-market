@@ -8,11 +8,13 @@
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<meta name="theme-color" content="#111111">
+<meta name="theme-color"
+content="#111111">
 
 <title>TABIBK | حجز موعد طبي</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
 
 <link rel="preconnect"
 href="https://fonts.gstatic.com"
@@ -23,10 +25,10 @@ rel="stylesheet">
 
 <style>
 
-/* =====================================================
-   TABIBK V2
-   PREMIUM MEDICAL BOOKING SYSTEM
-===================================================== */
+/* =========================================================
+   TABIBK V3
+   PREMIUM MEDICAL BOOKING APP
+========================================================= */
 
 *{
     margin:0;
@@ -38,149 +40,279 @@ rel="stylesheet">
 :root{
 
     --gold:#d4af37;
-    --gold-light:#f5d76e;
+    --gold-light:#f6df80;
     --gold-dark:#9b7610;
 
-    --black:#111111;
-    --black-2:#242424;
+    --black:#101010;
+    --black-2:#222;
 
-    --silver:#eeeeee;
-    --silver-2:#d5d5d5;
+    --white:#fff;
+    --silver:#f1f1f1;
+    --silver-2:#dedede;
 
-    --green:#16a05d;
+    --green:#18a566;
     --red:#dc3545;
     --blue:#2878f0;
+    --orange:#f39c12;
 
-    --bg:#eeeeee;
-    --card:#ffffff;
+    --text:#222;
+    --muted:#777;
 
+    --shadow:
+        0 15px 40px rgba(0,0,0,.14);
+
+    --radius:22px;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
 
     min-height:100vh;
 
+    color:var(--text);
+
     background:
+
         radial-gradient(
             circle at 90% 0%,
-            rgba(212,175,55,.20),
-            transparent 32%
+            rgba(212,175,55,.22),
+            transparent 30%
         ),
 
         linear-gradient(
-            135deg,
-            #f8f8f8,
+            145deg,
+            #fafafa,
             #dedede
         );
 
-    color:#292929;
-
+    padding-bottom:80px;
 }
 
-
-/* =====================================================
+/* =========================================================
    HEADER
-===================================================== */
+========================================================= */
 
 .header{
 
     position:relative;
 
-    padding:25px 15px 70px;
+    overflow:hidden;
 
-    text-align:center;
+    padding:
+        22px
+        18px
+        95px;
 
     color:white;
 
     background:
+
         radial-gradient(
-            circle at 50% 0%,
-            #444,
+            circle at 50% -20%,
+            #555,
             transparent 45%
         ),
 
         linear-gradient(
             145deg,
-            #090909,
+            #080808,
             #292929,
-            #0b0b0b
+            #090909
         );
 
-    border-bottom:4px solid var(--gold);
+    border-bottom:
+        4px solid var(--gold);
 
     box-shadow:
-        0 10px 35px rgba(0,0,0,.30);
-
+        0 12px 40px rgba(0,0,0,.3);
 }
 
+.header::before{
 
-.logo{
+    content:"";
 
-    width:82px;
-    height:82px;
+    position:absolute;
 
-    margin:auto;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    width:220px;
+    height:220px;
 
     border-radius:50%;
 
-    font-size:38px;
+    background:
+        rgba(212,175,55,.08);
+
+    top:-100px;
+    right:-80px;
+}
+
+.header::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.04);
+
+    bottom:-100px;
+    left:-70px;
+}
+
+.top-header{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    max-width:720px;
+
+    margin:auto;
+}
+
+.logo{
+
+    width:70px;
+    height:70px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:22px;
+
+    font-size:34px;
 
     color:var(--gold-dark);
 
     background:
         linear-gradient(
             145deg,
-            #ffffff,
-            #cfcfcf
+            #fff,
+            #ccc
         );
 
-    border:4px solid var(--gold);
+    border:
+        3px solid var(--gold);
 
     box-shadow:
-        0 8px 0 #806311,
-        0 15px 30px rgba(0,0,0,.45);
 
+        0 7px 0 #765800,
+
+        0 12px 25px
+        rgba(0,0,0,.4);
 }
 
+.header-actions{
 
-.header h1{
+    display:flex;
 
-    margin-top:17px;
+    gap:8px;
+}
 
-    font-size:28px;
+.icon-btn{
+
+    width:45px;
+    height:45px;
+
+    border:none;
+
+    border-radius:14px;
+
+    color:white;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    position:relative;
+
+    transition:.2s;
+}
+
+.icon-btn:active{
+
+    transform:scale(.92);
+}
+
+.notification-dot{
+
+    position:absolute;
+
+    width:9px;
+    height:9px;
+
+    background:
+        var(--red);
+
+    border-radius:50%;
+
+    top:7px;
+    right:7px;
+
+    border:2px solid
+        var(--black);
+}
+
+.header-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:720px;
+
+    margin:
+        22px auto 0;
+
+    text-align:center;
+}
+
+.header-content h1{
+
+    font-size:29px;
 
     font-weight:900;
-
-    letter-spacing:.3px;
-
 }
 
-
-.header h1 span{
+.header-content h1 span{
 
     color:var(--gold-light);
-
 }
 
-
-.header p{
-
-    margin-top:5px;
+.header-content p{
 
     color:#ddd;
 
-    font-size:14px;
+    margin-top:5px;
 
+    font-size:13px;
 }
 
-
-/* =====================================================
+/* =========================================================
    CONTAINER
-===================================================== */
+========================================================= */
 
 .container{
 
@@ -188,67 +320,181 @@ body{
 
     max-width:720px;
 
-    margin:-35px auto 40px;
+    margin:
+        -48px auto 30px;
 
     position:relative;
 
+    z-index:5;
 }
 
+/* =========================================================
+   SEARCH
+========================================================= */
 
-/* =====================================================
+.search-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    background:white;
+
+    padding:7px;
+
+    border-radius:18px;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.16);
+
+    border:
+        1px solid #ddd;
+
+    margin-bottom:15px;
+}
+
+.search-box span{
+
+    font-size:20px;
+
+    padding-right:8px;
+}
+
+.search-box input{
+
+    border:none;
+
+    background:transparent;
+
+    box-shadow:none;
+
+    padding:11px 4px;
+
+    flex:1;
+}
+
+.search-box input:focus{
+
+    border:none;
+
+    box-shadow:none;
+}
+
+/* =========================================================
+   QUICK STATS
+========================================================= */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:9px;
+
+    margin-bottom:17px;
+}
+
+.stat{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:13px 5px;
+
+    text-align:center;
+
+    border:
+        1px solid #ddd;
+
+    box-shadow:
+        0 7px 20px
+        rgba(0,0,0,.08);
+}
+
+.stat strong{
+
+    display:block;
+
+    font-size:20px;
+
+    color:var(--gold-dark);
+}
+
+.stat span{
+
+    font-size:10px;
+
+    color:var(--muted);
+
+    font-weight:700;
+}
+
+/* =========================================================
    MAIN CARD
-===================================================== */
+========================================================= */
 
 .card{
 
-    background:rgba(255,255,255,.97);
+    background:
+        rgba(255,255,255,.98);
 
-    border-radius:26px;
+    border-radius:
+        var(--radius);
 
-    padding:25px;
+    padding:22px;
 
-    border:1px solid var(--gold);
+    border:
+        1px solid var(--gold);
 
     box-shadow:
+        var(--shadow);
 
-        0 18px 45px rgba(0,0,0,.17),
-
-        inset 0 1px 0 white;
-
+    margin-bottom:17px;
 }
 
-
-/* =====================================================
-   SECTION TITLE
-===================================================== */
+/* =========================================================
+   SECTION
+========================================================= */
 
 .section-title{
 
     text-align:center;
 
-    margin-bottom:23px;
-
+    margin-bottom:18px;
 }
-
 
 .section-title h2{
 
-    font-size:22px;
+    font-size:21px;
 
     font-weight:900;
-
 }
 
+.section-title p{
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-top:3px;
+}
 
 .gold-line{
 
-    width:95px;
+    width:90px;
 
     height:4px;
 
-    margin:8px auto;
+    margin:
+        8px auto;
 
-    border-radius:10px;
+    border-radius:20px;
 
     background:
         linear-gradient(
@@ -257,20 +503,113 @@ body{
             var(--gold),
             #aaa
         );
-
 }
 
+/* =========================================================
+   SPECIALTIES
+========================================================= */
 
-/* =====================================================
+.specialties{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:9px;
+
+    margin-bottom:20px;
+}
+
+.specialty{
+
+    border:none;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff,
+            #ededed
+        );
+
+    border:
+        1px solid #ddd;
+
+    border-radius:17px;
+
+    padding:11px 4px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+    box-shadow:
+        0 5px 12px
+        rgba(0,0,0,.07);
+}
+
+.specialty:active{
+
+    transform:
+        translateY(3px);
+}
+
+.specialty.active{
+
+    border-color:
+        var(--gold);
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffaf0,
+            #eeeeee
+        );
+
+    box-shadow:
+        0 6px 18px
+        rgba(212,175,55,.2);
+}
+
+.specialty-icon{
+
+    width:38px;
+    height:38px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:13px;
+
+    background:
+        #f2f2f2;
+
+    font-size:20px;
+}
+
+.specialty strong{
+
+    display:block;
+
+    font-size:10px;
+
+    margin-top:5px;
+
+    line-height:1.4;
+}
+
+/* =========================================================
    FORM
-===================================================== */
+========================================================= */
 
 .form-group{
 
-    margin-bottom:17px;
-
+    margin-bottom:16px;
 }
-
 
 label{
 
@@ -278,19 +617,15 @@ label{
 
     margin-bottom:7px;
 
-    font-size:14px;
+    font-size:13px;
 
     font-weight:800;
-
 }
-
 
 .required{
 
-    color:#c39717;
-
+    color:var(--red);
 }
-
 
 input,
 select,
@@ -308,84 +643,113 @@ textarea{
 
     background:#f4f4f4;
 
-    border:2px solid #ddd;
+    border:
+        2px solid #ddd;
 
-    font-size:15px;
+    font-size:14px;
 
     color:#333;
 
     transition:.25s;
 
     box-shadow:
-        inset 0 2px 5px rgba(0,0,0,.07);
-
+        inset 0 2px 5px
+        rgba(0,0,0,.06);
 }
-
 
 input:focus,
 select:focus,
 textarea:focus{
 
-    background:#fff;
+    background:white;
 
-    border-color:var(--gold);
+    border-color:
+        var(--gold);
 
     box-shadow:
-        0 0 0 4px rgba(212,175,55,.13);
-
+        0 0 0 4px
+        rgba(212,175,55,.12);
 }
-
 
 textarea{
 
-    min-height:95px;
+    min-height:90px;
 
     resize:none;
-
 }
-
 
 .row{
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
-    gap:14px;
-
+    gap:12px;
 }
 
+/* =========================================================
+   DOCTOR SELECT
+========================================================= */
 
-/* =====================================================
+.doctor-select-group{
+
+    display:none;
+
+    animation:
+        slideDown .3s ease;
+}
+
+@keyframes slideDown{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(-10px);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0);
+    }
+}
+
+/* =========================================================
    DOCTOR CARD
-===================================================== */
+========================================================= */
 
 .doctor-box{
 
     display:none;
 
-    margin:5px 0 20px;
+    margin:
+        5px 0 18px;
 
     padding:16px;
 
-    border-radius:18px;
+    border-radius:19px;
 
     background:
         linear-gradient(
             145deg,
             #fffaf0,
-            #eeeeee
+            #ededed
         );
 
-    border:1px solid #ddd;
+    border:
+        1px solid #ddd;
 
-    border-right:5px solid var(--gold);
+    border-right:
+        5px solid var(--gold);
 
     box-shadow:
-        0 7px 18px rgba(0,0,0,.08);
+        0 8px 20px
+        rgba(0,0,0,.08);
 
+    animation:
+        slideDown .3s ease;
 }
-
 
 .doctor-top{
 
@@ -394,14 +758,12 @@ textarea{
     align-items:center;
 
     gap:13px;
-
 }
-
 
 .doctor-avatar{
 
-    width:58px;
-    height:58px;
+    width:61px;
+    height:61px;
 
     flex-shrink:0;
 
@@ -412,7 +774,7 @@ textarea{
     align-items:center;
     justify-content:center;
 
-    font-size:27px;
+    font-size:28px;
 
     background:
         linear-gradient(
@@ -421,37 +783,52 @@ textarea{
             #ccc
         );
 
-    border:2px solid var(--gold);
+    border:
+        2px solid var(--gold);
 
+    box-shadow:
+        0 5px 12px
+        rgba(0,0,0,.1);
 }
-
 
 .doctor-info{
 
     flex:1;
-
 }
-
 
 .doctor-info h3{
 
     font-size:16px;
 
     font-weight:900;
-
 }
-
 
 .doctor-info p{
 
     color:#777;
 
-    font-size:12px;
+    font-size:11px;
 
     margin-top:2px;
-
 }
 
+.verified{
+
+    display:inline-block;
+
+    color:white;
+
+    background:
+        var(--green);
+
+    padding:2px 7px;
+
+    border-radius:20px;
+
+    font-size:9px;
+
+    margin-top:4px;
+}
 
 .doctor-meta{
 
@@ -459,99 +836,109 @@ textarea{
 
     flex-wrap:wrap;
 
-    gap:7px;
+    gap:6px;
 
     margin-top:12px;
-
 }
-
 
 .badge{
 
-    padding:5px 9px;
+    padding:
+        5px 9px;
 
     border-radius:20px;
 
     background:white;
 
-    border:1px solid #ddd;
+    border:
+        1px solid #ddd;
 
-    font-size:11px;
+    font-size:10px;
 
     font-weight:800;
-
 }
-
 
 .rating{
 
-    color:#b18712;
-
+    color:
+        var(--gold-dark);
 }
 
+/* =========================================================
+   TIME GRID
+========================================================= */
 
-/* =====================================================
-   QUICK INFO
-===================================================== */
+.time-title{
 
-.quick-info{
+    font-size:12px;
+
+    font-weight:800;
+
+    margin:
+        0 0 8px;
+}
+
+.time-grid{
 
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(4,1fr);
 
-    gap:9px;
+    gap:7px;
 
-    margin:18px 0;
-
+    margin-bottom:16px;
 }
 
+.time-btn{
 
-.quick-item{
+    border:
+        1px solid #ddd;
 
-    padding:12px 6px;
+    background:
+        #f7f7f7;
 
-    text-align:center;
+    border-radius:11px;
 
-    border-radius:14px;
+    padding:9px 4px;
 
-    background:#f5f5f5;
+    cursor:pointer;
 
-    border:1px solid #ddd;
+    font-weight:700;
 
+    font-size:11px;
+
+    transition:.2s;
 }
 
+.time-btn.active{
 
-.quick-item strong{
+    color:white;
 
-    display:block;
+    border-color:
+        var(--gold-dark);
 
-    font-size:17px;
+    background:
+        linear-gradient(
+            145deg,
+            #f5d76e,
+            #b78b13
+        );
 
-    color:var(--gold-dark);
-
+    box-shadow:
+        0 4px 0 #765800;
 }
 
-
-.quick-item span{
-
-    font-size:10px;
-
-    color:#777;
-
-}
-
-
-/* =====================================================
+/* =========================================================
    INFO BOX
-===================================================== */
+========================================================= */
 
 .info-box{
 
-    margin:20px 0;
+    margin:
+        18px 0;
 
-    padding:15px;
+    padding:14px;
 
     border-radius:17px;
 
@@ -562,23 +949,20 @@ textarea{
             #f0f0f0
         );
 
-    border-right:5px solid var(--gold);
-
+    border-right:
+        5px solid var(--gold);
 }
-
 
 .info-item{
 
     margin:6px 0;
 
-    font-size:12px;
-
+    font-size:11px;
 }
 
-
-/* =====================================================
-   SUBMIT BUTTON
-===================================================== */
+/* =========================================================
+   SUBMIT
+========================================================= */
 
 .submit-btn{
 
@@ -594,7 +978,7 @@ textarea{
 
     border-radius:16px;
 
-    font-size:17px;
+    font-size:16px;
 
     font-weight:900;
 
@@ -610,77 +994,53 @@ textarea{
 
         0 7px 0 #765800,
 
-        0 12px 20px rgba(0,0,0,.22),
+        0 12px 20px
+        rgba(0,0,0,.2),
 
-        inset 0 2px 1px
+        inset
+        0 2px 1px
         rgba(255,255,255,.6);
 
     transition:.15s;
-
 }
-
-
-.submit-btn:hover{
-
-    transform:translateY(-2px);
-
-}
-
 
 .submit-btn:active{
 
-    transform:translateY(6px);
+    transform:
+        translateY(6px);
 
     box-shadow:
         0 2px 0 #765800;
-
 }
-
-
-.submit-btn:disabled{
-
-    opacity:.6;
-
-    cursor:not-allowed;
-
-}
-
-
-/* =====================================================
-   WHATSAPP
-===================================================== */
 
 .whatsapp{
 
-    margin-top:17px;
+    margin-top:13px;
 
-    padding:12px;
+    padding:11px;
 
     text-align:center;
 
-    border-radius:14px;
+    border-radius:13px;
 
     background:#f4f4f4;
 
     border:1px solid #ddd;
 
-    font-size:12px;
-
+    font-size:11px;
 }
-
 
 .whatsapp span{
 
-    color:var(--green);
+    color:
+        var(--green);
 
     font-weight:900;
-
 }
 
-
-/* =====================================================
+/* =========================================================
    SUCCESS
-===================================================== */
+========================================================= */
 
 .success{
 
@@ -688,15 +1048,14 @@ textarea{
 
     text-align:center;
 
-    padding:15px 5px 10px;
-
+    padding:
+        10px 4px 5px;
 }
-
 
 .success-icon{
 
-    width:80px;
-    height:80px;
+    width:84px;
+    height:84px;
 
     margin:auto;
 
@@ -707,48 +1066,69 @@ textarea{
 
     border-radius:50%;
 
-    font-size:40px;
+    font-size:42px;
 
-    color:#a77e0c;
+    color:
+        var(--green);
 
     background:
         linear-gradient(
             145deg,
             #fff,
-            #cfcfcf
+            #ddd
         );
 
-    border:3px solid var(--gold);
+    border:
+        3px solid
+        var(--green);
 
     box-shadow:
         0 7px 0 #888;
 
+    animation:
+        successPop .5s ease;
 }
 
+@keyframes successPop{
+
+    0%{
+        transform:
+            scale(.5);
+        opacity:0;
+    }
+
+    70%{
+        transform:
+            scale(1.1);
+    }
+
+    100%{
+        transform:
+            scale(1);
+        opacity:1;
+    }
+}
 
 .success h2{
 
     margin-top:17px;
 
-    font-size:22px;
-
+    font-size:21px;
 }
-
 
 .success p{
 
     color:#777;
 
-    margin-top:7px;
+    margin-top:6px;
 
-    font-size:13px;
-
+    font-size:12px;
 }
-
 
 .booking-number{
 
-    margin:18px auto;
+    margin:
+        17px auto;
 
     padding:13px;
 
@@ -758,40 +1138,133 @@ textarea{
 
     background:#f4f4f4;
 
-    border:1px dashed var(--gold);
-
+    border:
+        1px dashed
+        var(--gold);
 }
-
 
 .booking-number strong{
 
     display:block;
 
-    color:var(--gold-dark);
+    color:
+        var(--gold-dark);
 
     font-size:20px;
 
     letter-spacing:2px;
-
 }
 
+/* =========================================================
+   STATUS
+========================================================= */
 
-/* =====================================================
-   ACTION BUTTONS
-===================================================== */
+.status-card{
+
+    display:none;
+
+    padding:17px;
+
+    border-radius:18px;
+
+    margin-top:15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff,
+            #eeeeee
+        );
+
+    border:
+        1px solid #ddd;
+}
+
+.status-head{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:12px;
+}
+
+.status-head strong{
+
+    font-size:14px;
+}
+
+.status-badge{
+
+    padding:
+        5px 10px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    font-weight:900;
+
+    background:
+        #fff3cd;
+
+    color:#856404;
+}
+
+.status-step{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin:10px 0;
+
+    font-size:11px;
+}
+
+.status-circle{
+
+    width:28px;
+    height:28px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#ddd;
+}
+
+.status-step.active
+.status-circle{
+
+    color:white;
+
+    background:
+        var(--green);
+}
+
+/* =========================================================
+   ACTIONS
+========================================================= */
 
 .actions{
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
-    gap:10px;
+    gap:9px;
 
     margin-top:15px;
-
 }
-
 
 .action-btn{
 
@@ -805,55 +1278,192 @@ textarea{
 
     font-weight:800;
 
-    font-size:13px;
-
+    font-size:12px;
 }
-
 
 .new-btn{
 
-    background:#222;
-
     color:white;
 
+    background:#222;
 }
-
 
 .copy-btn{
 
     background:#e8e8e8;
 
     color:#333;
-
 }
 
+.track-btn{
 
-/* =====================================================
-   FOOTER
-===================================================== */
+    color:white;
 
-.footer{
+    background:
+        var(--blue);
+}
 
-    text-align:center;
+/* =========================================================
+   HOME / FEATURES
+========================================================= */
+
+.feature-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:10px;
+}
+
+.feature{
+
+    padding:14px;
+
+    border-radius:17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff,
+            #f0f0f0
+        );
+
+    border:
+        1px solid #ddd;
+}
+
+.feature-icon{
+
+    font-size:24px;
+
+    margin-bottom:5px;
+}
+
+.feature strong{
+
+    display:block;
+
+    font-size:12px;
+}
+
+.feature span{
 
     color:#777;
 
-    font-size:11px;
-
-    padding:5px 0 30px;
-
+    font-size:10px;
 }
 
+/* =========================================================
+   NOTIFICATION PANEL
+========================================================= */
 
-/* =====================================================
+.notification-panel{
+
+    display:none;
+
+    position:fixed;
+
+    z-index:10000;
+
+    top:75px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    width:92%;
+
+    max-width:390px;
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:17px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.3);
+
+    border:
+        1px solid var(--gold);
+
+    animation:
+        slideDown .25s ease;
+}
+
+.notification-panel.show{
+
+    display:block;
+}
+
+.notification-head{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:12px;
+}
+
+.notification-head strong{
+
+    font-size:15px;
+}
+
+.close-notification{
+
+    border:none;
+
+    background:#eee;
+
+    width:32px;
+    height:32px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.notification{
+
+    padding:11px;
+
+    border-radius:13px;
+
+    background:#f6f6f6;
+
+    margin-top:8px;
+
+    font-size:11px;
+
+    border-right:
+        3px solid var(--gold);
+}
+
+.notification small{
+
+    display:block;
+
+    color:#888;
+
+    margin-top:3px;
+}
+
+/* =========================================================
    TOAST
-===================================================== */
+========================================================= */
 
 .toast{
 
     position:fixed;
 
-    bottom:20px;
+    bottom:85px;
 
     left:50%;
 
@@ -874,21 +1484,20 @@ textarea{
 
     text-align:center;
 
-    font-size:13px;
+    font-size:12px;
 
     font-weight:700;
 
-    z-index:9999;
+    z-index:99999;
 
     opacity:0;
 
     transition:.35s;
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,.3);
-
+        0 10px 30px
+        rgba(0,0,0,.3);
 }
-
 
 .toast.show{
 
@@ -896,65 +1505,142 @@ textarea{
         translate(-50%,0);
 
     opacity:1;
-
 }
 
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
 
-/* =====================================================
+.bottom-nav{
+
+    position:fixed;
+
+    z-index:9000;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    padding:
+        8px 8px
+        calc(8px + env(safe-area-inset-bottom));
+
+    background:
+        rgba(255,255,255,.95);
+
+    backdrop-filter:
+        blur(15px);
+
+    border-top:
+        1px solid #ddd;
+
+    box-shadow:
+        0 -8px 25px
+        rgba(0,0,0,.12);
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+}
+
+.nav-item{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    padding:5px;
+
+    color:#777;
+
+    font-size:10px;
+
+    font-weight:700;
+}
+
+.nav-item span{
+
+    display:block;
+
+    font-size:20px;
+
+    margin-bottom:2px;
+}
+
+.nav-item.active{
+
+    color:
+        var(--gold-dark);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer{
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:10px;
+
+    padding:
+        5px 0 20px;
+}
+
+/* =========================================================
    RESPONSIVE
-===================================================== */
+========================================================= */
 
 @media(max-width:600px){
 
-    .header{
+    .header-content h1{
 
-        padding-top:20px;
-
-    }
-
-    .header h1{
-
-        font-size:23px;
-
-    }
-
-    .container{
-
-        width:95%;
-
+        font-size:24px;
     }
 
     .card{
 
-        padding:19px;
+        padding:18px;
+    }
 
-        border-radius:21px;
+    .specialties{
 
+        grid-template-columns:
+            repeat(4,1fr);
     }
 
     .row{
 
-        grid-template-columns:1fr;
-
-        gap:0;
-
+        grid-template-columns:
+            1fr;
     }
 
-    .quick-info{
+    .time-grid{
 
         grid-template-columns:
             repeat(3,1fr);
+    }
+}
 
+@media(max-width:380px){
+
+    .specialties{
+
+        grid-template-columns:
+            repeat(3,1fr);
     }
 
-    input,
-    select,
-    textarea{
+    .header{
 
-        font-size:14px;
-
+        padding-bottom:90px;
     }
-
 }
 
 </style>
@@ -965,797 +1651,1313 @@ textarea{
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================================
      HEADER
-===================================================== -->
+========================================================= -->
 
 <header class="header">
 
-    <div class="logo">
-        🩺
+    <div class="top-header">
+
+        <div class="logo">
+            🩺
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                class="icon-btn"
+                onclick="openNotifications()">
+
+                🔔
+
+                <span
+                    class="notification-dot"
+                    id="notificationDot">
+                </span>
+
+            </button>
+
+        </div>
+
     </div>
 
-    <h1>
-        <span>TABIBK</span>
-        | حجز موعد طبي
-    </h1>
 
-    <p>
-        احجز موعدك مع طبيبك بسهولة وسرعة
-    </p>
+    <div class="header-content">
 
-</header>
+        <h1>
 
+            <span>TABIBK</span>
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
+            | طبيبك أقرب إليك
 
-<main class="container">
+        </h1>
 
-<div class="card">
+        <p>
 
+            احجز موعدك الطبي بسهولة، بسرعة وأمان
 
-<!-- ================= FORM ================= -->
-
-<div id="bookingForm">
-
-
-<div class="section-title">
-
-    <h2>
-        📋 معلومات الحجز
-    </h2>
-
-    <div class="gold-line"></div>
-
-</div>
-
-
-<!-- PATIENT -->
-
-<div class="form-group">
-
-<label>
-    👤 اسم المريض
-    <span class="required">*</span>
-</label>
-
-<input
-    type="text"
-    id="patientName"
-    placeholder="أدخل الاسم الكامل"
-    autocomplete="name"
->
-
-</div>
-
-
-<!-- PHONE -->
-
-<div class="form-group">
-
-<label>
-    📱 رقم الهاتف
-    <span class="required">*</span>
-</label>
-
-<input
-    type="tel"
-    id="patientPhone"
-    placeholder="مثال: 0550123456"
-    inputmode="tel"
->
-
-</div>
-
-
-<!-- SPECIALTY -->
-
-<div class="form-group">
-
-<label>
-    🩺 التخصص الطبي
-    <span class="required">*</span>
-</label>
-
-<select id="specialty"
-onchange="loadDoctors()">
-
-<option value="">
-    اختر التخصص
-</option>
-
-<option value="طب عام">
-    🩺 طب عام
-</option>
-
-<option value="طب الأطفال">
-    👶 طب الأطفال
-</option>
-
-<option value="طب الأسنان">
-    🦷 طب الأسنان
-</option>
-
-<option value="أمراض القلب">
-    ❤️ أمراض القلب
-</option>
-
-<option value="الأمراض الجلدية">
-    🧴 الأمراض الجلدية
-</option>
-
-<option value="العيون">
-    👁️ العيون
-</option>
-
-<option value="الأنف والأذن والحنجرة">
-    👂 الأنف والأذن والحنجرة
-</option>
-
-<option value="أمراض النساء والتوليد">
-    🤰 أمراض النساء والتوليد
-</option>
-
-<option value="العظام والمفاصل">
-    🦴 العظام والمفاصل
-</option>
-
-<option value="أمراض الجهاز الهضمي">
-    🩻 أمراض الجهاز الهضمي
-</option>
-
-<option value="أمراض المسالك البولية">
-    🧑‍⚕️ أمراض المسالك البولية
-</option>
-
-<option value="الطب النفسي">
-    🧠 الطب النفسي
-</option>
-
-<option value="أخرى">
-    ➕ أخرى
-</option>
-
-</select>
-
-</div>
-
-
-<!-- DOCTOR -->
-
-<div
-    class="form-group"
-    id="doctorSelectGroup"
-    style="display:none"
->
-
-<label>
-    👨‍⚕️ اختر الطبيب
-    <span class="required">*</span>
-</label>
-
-<select
-    id="doctorSelect"
-    onchange="showDoctor()"
->
-
-<option value="">
-    اختر الطبيب
-</option>
-
-</select>
-
-</div>
-
-
-<!-- DOCTOR CARD -->
-
-<div
-    class="doctor-box"
-    id="doctorBox"
->
-
-<div class="doctor-top">
-
-    <div class="doctor-avatar">
-        👨‍⚕️
-    </div>
-
-    <div class="doctor-info">
-
-        <h3 id="doctorDisplayName">
-            -
-        </h3>
-
-        <p id="doctorDisplaySpecialty">
-            -
         </p>
 
     </div>
 
-</div>
+</header>
 
 
-<div class="doctor-meta">
-
-    <span class="badge rating"
-    id="doctorRating">
-        ⭐ -
-    </span>
-
-    <span class="badge"
-    id="doctorExperience">
-        🎓 -
-    </span>
-
-    <span class="badge"
-    id="doctorClinic">
-        🏥 -
-    </span>
-
-</div>
-
-</div>
-
-
-<!-- DATE TIME -->
-
-<div class="row">
-
-<div class="form-group">
-
-<label>
-    📅 تاريخ الموعد
-    <span class="required">*</span>
-</label>
-
-<input
-    type="date"
-    id="appointmentDate"
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>
-    🕐 وقت الموعد
-    <span class="required">*</span>
-</label>
-
-<select id="appointmentTime">
-
-<option value="">
-    اختر الوقت
-</option>
-
-<option>08:00</option>
-<option>08:30</option>
-<option>09:00</option>
-<option>09:30</option>
-<option>10:00</option>
-<option>10:30</option>
-<option>11:00</option>
-<option>11:30</option>
-<option>14:00</option>
-<option>14:30</option>
-<option>15:00</option>
-<option>15:30</option>
-<option>16:00</option>
-<option>16:30</option>
-<option>17:00</option>
-<option>17:30</option>
-<option>18:00</option>
-<option>18:30</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<!-- TYPE -->
-
-<div class="form-group">
-
-<label>
-    📋 نوع الموعد
-</label>
-
-<select id="appointmentType">
-
-<option>
-    فحص واستشارة
-</option>
-
-<option>
-    متابعة
-</option>
-
-<option>
-    استشارة أولية
-</option>
-
-<option>
-    فحص دوري
-</option>
-
-</select>
-
-</div>
-
-
-<!-- NOTES -->
-
-<div class="form-group">
-
-<label>
-    📝 ملاحظات إضافية
-</label>
-
-<textarea
-    id="notes"
-    placeholder="اكتب أي ملاحظة تريد إرسالها للطبيب..."
-></textarea>
-
-</div>
-
-
-<!-- QUICK INFO -->
-
-<div class="quick-info">
-
-<div class="quick-item">
-
-<strong>⚡</strong>
-
-<span>
-حجز سريع
-</span>
-
-</div>
-
-
-<div class="quick-item">
-
-<strong>🔒</strong>
-
-<span>
-بيانات آمنة
-</span>
-
-</div>
-
-
-<div class="quick-item">
-
-<strong>💬</strong>
-
-<span>
-واتساب
-</span>
-
-</div>
-
-</div>
-
-
-<!-- INFO -->
-
-<div class="info-box">
-
-<div class="info-item">
-👤 <strong>المريض:</strong>
-سيتم إرسال الاسم ورقم الهاتف.
-</div>
-
-<div class="info-item">
-👨‍⚕️ <strong>الطبيب:</strong>
-اختر الطبيب المناسب من القائمة.
-</div>
-
-<div class="info-item">
-📅 <strong>الموعد:</strong>
-اختر اليوم والساعة المناسبة.
-</div>
-
-<div class="info-item">
-💬 <strong>التأكيد:</strong>
-سيتم إرسال الطلب عبر واتساب.
-</div>
-
-</div>
-
-
-<!-- BUTTON -->
-
-<button
-    class="submit-btn"
-    id="submitBtn"
-    onclick="sendBooking()"
->
-
-📲 إرسال طلب الحجز عبر واتساب
-
-</button>
-
-
-<div class="whatsapp">
-
-رقم استقبال الحجوزات:
-
-<span>
-0671 99 58 31
-</span>
-
-</div>
-
-
-</div>
-
-
-<!-- =====================================================
-     SUCCESS
-===================================================== -->
+<!-- =========================================================
+     NOTIFICATIONS
+========================================================= -->
 
 <div
-    class="success"
-    id="successBox"
->
+    class="notification-panel"
+    id="notificationPanel">
 
-<div class="success-icon">
-    ✓
-</div>
+    <div class="notification-head">
 
+        <strong>
+            🔔 الإشعارات
+        </strong>
 
-<h2>
-    تم تجهيز طلب الحجز 🎉
-</h2>
+        <button
+            class="close-notification"
+            onclick="closeNotifications()">
 
+            ✕
 
-<p>
-    رقم الحجز الخاص بك:
-</p>
+        </button>
 
+    </div>
 
-<div class="booking-number">
+    <div id="notificationList">
 
-<strong id="bookingNumber">
-    TAB-000000
-</strong>
+        <div class="notification">
 
-</div>
+            🩺 مرحباً بك في TABIBK
 
+            <small>
+                يمكنك حجز موعدك الآن
+            </small>
 
-<p>
-سيتم فتح واتساب لإرسال الطلب للطبيب.
-</p>
+        </div>
 
-
-<div class="actions">
-
-<button
-    class="action-btn new-btn"
-    onclick="newBooking()"
->
-➕ حجز جديد
-</button>
-
-
-<button
-    class="action-btn copy-btn"
-    onclick="copyBookingNumber()"
->
-📋 نسخ الرقم
-</button>
-
-</div>
+    </div>
 
 </div>
 
 
-</div>
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="container">
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <span>🔎</span>
+
+        <input
+            type="search"
+            id="searchDoctor"
+            placeholder="ابحث عن طبيب أو تخصص..."
+            oninput="searchDoctors()">
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <strong>
+                ⚡
+            </strong>
+
+            <span>
+                حجز سريع
+            </span>
+
+        </div>
+
+        <div class="stat">
+
+            <strong>
+                🩺
+            </strong>
+
+            <span>
+                أطباء متخصصون
+            </span>
+
+        </div>
+
+        <div class="stat">
+
+            <strong>
+                🔒
+            </strong>
+
+            <span>
+                بيانات آمنة
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SPECIALTIES
+    ====================================================== -->
+
+    <div class="card">
+
+        <div class="section-title">
+
+            <h2>
+                🩺 التخصصات الطبية
+            </h2>
+
+            <p>
+                اختر التخصص الذي تحتاجه
+            </p>
+
+            <div class="gold-line"></div>
+
+        </div>
+
+
+        <div class="specialties">
+
+
+            <button
+                class="specialty"
+                onclick="chooseSpecialty('طب عام',this)">
+
+                <div class="specialty-icon">
+                    🩺
+                </div>
+
+                <strong>
+                    طب عام
+                </strong>
+
+            </button>
+
+
+            <button
+                class="specialty"
+                onclick="chooseSpecialty('طب الأطفال',this)">
+
+                <div class="specialty-icon">
+                    👶
+                </div>
+
+                <strong>
+                    أطفال
+                </strong>
+
+            </button>
+
+
+            <button
+                class="specialty"
+                onclick="chooseSpecialty('طب الأسنان',this)">
+
+                <div class="specialty-icon">
+                    🦷
+                </div>
+
+                <strong>
+                    أسنان
+                </strong>
+
+            </button>
+
+
+            <button
+                class="specialty"
+                onclick="chooseSpecialty('أمراض القلب',this)">
+
+                <div class="specialty-icon">
+                    ❤️
+                </div>
+
+                <strong>
+                    قلب
+                </strong>
+
+            </button>
+
+
+            <button
+                class="specialty"
+                onclick="chooseSpecialty('الأمراض الجلدية',this)">
+
+                <div class="specialty-icon">
+                    🧴
+                </div>
+
+                <strong>
+                    جلدية
+                </strong>
+
+            </button>
+
+
+            <button
+                class="specialty"
+                onclick="chooseSpecialty('العيون',this)">
+
+                <div class="specialty-icon">
+                    👁️
+                </div>
+
+                <strong>
+                    عيون
+                </strong>
+
+            </button>
+
+
+            <button
+                class="specialty"
+                onclick="chooseSpecialty('الأنف والأذن والحنجرة',this)">
+
+                <div class="specialty-icon">
+                    👂
+                </div>
+
+                <strong>
+                    أنف وأذن
+                </strong>
+
+            </button>
+
+
+            <button
+                class="specialty"
+                onclick="chooseSpecialty('العظام والمفاصل',this)">
+
+                <div class="specialty-icon">
+                    🦴
+                </div>
+
+                <strong>
+                    عظام
+                </strong>
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         BOOKING CARD
+    ====================================================== -->
+
+    <div class="card">
+
+        <div class="section-title">
+
+            <h2>
+                📅 احجز موعدك
+            </h2>
+
+            <p>
+                املأ المعلومات التالية لإرسال طلب الحجز
+            </p>
+
+            <div class="gold-line"></div>
+
+        </div>
+
+
+        <div id="bookingForm">
+
+
+            <!-- PATIENT NAME -->
+
+            <div class="form-group">
+
+                <label>
+
+                    👤 اسم المريض
+
+                    <span class="required">
+                        *
+                    </span>
+
+                </label>
+
+                <input
+                    type="text"
+                    id="patientName"
+                    placeholder="أدخل الاسم الكامل"
+                    autocomplete="name">
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div class="form-group">
+
+                <label>
+
+                    📱 رقم الهاتف
+
+                    <span class="required">
+                        *
+                    </span>
+
+                </label>
+
+                <input
+                    type="tel"
+                    id="patientPhone"
+                    placeholder="مثال: 0550123456"
+                    inputmode="tel">
+
+            </div>
+
+
+            <!-- SPECIALTY -->
+
+            <div class="form-group">
+
+                <label>
+
+                    🩺 التخصص الطبي
+
+                    <span class="required">
+                        *
+                    </span>
+
+                </label>
+
+                <select
+                    id="specialty"
+                    onchange="loadDoctors()">
+
+                    <option value="">
+                        اختر التخصص
+                    </option>
+
+                    <option value="طب عام">
+                        🩺 طب عام
+                    </option>
+
+                    <option value="طب الأطفال">
+                        👶 طب الأطفال
+                    </option>
+
+                    <option value="طب الأسنان">
+                        🦷 طب الأسنان
+                    </option>
+
+                    <option value="أمراض القلب">
+                        ❤️ أمراض القلب
+                    </option>
+
+                    <option value="الأمراض الجلدية">
+                        🧴 الأمراض الجلدية
+                    </option>
+
+                    <option value="العيون">
+                        👁️ العيون
+                    </option>
+
+                    <option value="الأنف والأذن والحنجرة">
+                        👂 الأنف والأذن والحنجرة
+                    </option>
+
+                    <option value="أمراض النساء والتوليد">
+                        🤰 نساء وتوليد
+                    </option>
+
+                    <option value="العظام والمفاصل">
+                        🦴 العظام والمفاصل
+                    </option>
+
+                    <option value="أمراض الجهاز الهضمي">
+                        🩻 الجهاز الهضمي
+                    </option>
+
+                    <option value="أمراض المسالك البولية">
+                        🧑‍⚕️ المسالك البولية
+                    </option>
+
+                    <option value="الطب النفسي">
+                        🧠 الطب النفسي
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- DOCTOR -->
+
+            <div
+                class="form-group doctor-select-group"
+                id="doctorSelectGroup">
+
+                <label>
+
+                    👨‍⚕️ اختر الطبيب
+
+                    <span class="required">
+                        *
+                    </span>
+
+                </label>
+
+                <select
+                    id="doctorSelect"
+                    onchange="showDoctor()">
+
+                    <option value="">
+                        اختر الطبيب
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- DOCTOR CARD -->
+
+            <div
+                class="doctor-box"
+                id="doctorBox">
+
+                <div class="doctor-top">
+
+                    <div class="doctor-avatar">
+                        👨‍⚕️
+                    </div>
+
+                    <div class="doctor-info">
+
+                        <h3 id="doctorDisplayName">
+                            -
+                        </h3>
+
+                        <p id="doctorDisplaySpecialty">
+                            -
+                        </p>
+
+                        <span class="verified">
+                            ✓ طبيب موثوق
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="doctor-meta">
+
+                    <span
+                        class="badge rating"
+                        id="doctorRating">
+                        ⭐ -
+                    </span>
+
+                    <span
+                        class="badge"
+                        id="doctorExperience">
+                        🎓 -
+                    </span>
+
+                    <span
+                        class="badge"
+                        id="doctorClinic">
+                        🏥 -
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- DATE -->
+
+            <div class="row">
+
+                <div class="form-group">
+
+                    <label>
+
+                        📅 تاريخ الموعد
+
+                        <span class="required">
+                            *
+                        </span>
+
+                    </label>
+
+                    <input
+                        type="date"
+                        id="appointmentDate"
+                        onchange="updateDate()">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+
+                        📋 نوع الموعد
+
+                    </label>
+
+                    <select id="appointmentType">
+
+                        <option>
+                            فحص واستشارة
+                        </option>
+
+                        <option>
+                            متابعة
+                        </option>
+
+                        <option>
+                            استشارة أولية
+                        </option>
+
+                        <option>
+                            فحص دوري
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- TIME -->
+
+            <div class="form-group">
+
+                <div class="time-title">
+                    🕐 اختر الوقت
+                </div>
+
+                <div
+                    class="time-grid"
+                    id="timeGrid">
+
+                </div>
+
+                <input
+                    type="hidden"
+                    id="appointmentTime">
+
+            </div>
+
+
+            <!-- NOTES -->
+
+            <div class="form-group">
+
+                <label>
+                    📝 ملاحظات إضافية
+                </label>
+
+                <textarea
+                    id="notes"
+                    placeholder="اكتب أي ملاحظة تريد إرسالها..."></textarea>
+
+            </div>
+
+
+            <!-- INFO -->
+
+            <div class="info-box">
+
+                <div class="info-item">
+                    👤 <strong>المريض:</strong>
+                    الاسم ورقم الهاتف
+                </div>
+
+                <div class="info-item">
+                    👨‍⚕️ <strong>الطبيب:</strong>
+                    الطبيب الذي اخترته
+                </div>
+
+                <div class="info-item">
+                    📅 <strong>الموعد:</strong>
+                    التاريخ والساعة
+                </div>
+
+                <div class="info-item">
+                    💬 <strong>التأكيد:</strong>
+                    عبر واتساب
+                </div>
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                class="submit-btn"
+                id="submitBtn"
+                onclick="sendBooking()">
+
+                📲 إرسال طلب الحجز عبر واتساب
+
+            </button>
+
+
+            <div class="whatsapp">
+
+                رقم استقبال الحجوزات:
+
+                <span>
+                    0671 99 58 31
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             SUCCESS
+        ================================================== -->
+
+        <div
+            class="success"
+            id="successBox">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <h2>
+                تم إرسال طلب الحجز 🎉
+            </h2>
+
+            <p>
+                رقم الحجز الخاص بك
+            </p>
+
+            <div class="booking-number">
+
+                <strong id="bookingNumber">
+                    TAB-000000
+                </strong>
+
+            </div>
+
+            <p>
+                احتفظ بهذا الرقم لمتابعة الحجز
+            </p>
+
+
+            <div class="actions">
+
+                <button
+                    class="action-btn new-btn"
+                    onclick="newBooking()">
+
+                    ➕ حجز جديد
+
+                </button>
+
+                <button
+                    class="action-btn copy-btn"
+                    onclick="copyBookingNumber()">
+
+                    📋 نسخ الرقم
+
+                </button>
+
+            </div>
+
+
+            <button
+                class="action-btn track-btn"
+                style="width:100%;margin-top:9px"
+                onclick="showBookingStatus()">
+
+                📌 متابعة حالة الحجز
+
+            </button>
+
+
+            <!-- STATUS -->
+
+            <div
+                class="status-card"
+                id="statusCard">
+
+                <div class="status-head">
+
+                    <strong>
+                        📌 حالة طلبك
+                    </strong>
+
+                    <span
+                        class="status-badge"
+                        id="statusBadge">
+
+                        قيد الانتظار
+
+                    </span>
+
+                </div>
+
+
+                <div class="status-step active">
+
+                    <div class="status-circle">
+                        ✓
+                    </div>
+
+                    تم إرسال الطلب
+
+                </div>
+
+
+                <div class="status-step">
+
+                    <div class="status-circle">
+                        2
+                    </div>
+
+                    في انتظار تأكيد الطبيب
+
+                </div>
+
+
+                <div class="status-step">
+
+                    <div class="status-circle">
+                        3
+                    </div>
+
+                    تم تأكيد الموعد
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FEATURES
+    ====================================================== -->
+
+    <div class="card">
+
+        <div class="section-title">
+
+            <h2>
+                ✨ لماذا TABIBK؟
+            </h2>
+
+            <div class="gold-line"></div>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <strong>
+                    حجز سريع
+                </strong>
+
+                <span>
+                    احجز موعدك في دقائق
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔔
+                </div>
+
+                <strong>
+                    متابعة الطلب
+                </strong>
+
+                <span>
+                    تابع حالة حجزك بسهولة
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    💬
+                </div>
+
+                <strong>
+                    واتساب
+                </strong>
+
+                <span>
+                    إرسال مباشر لمكتب الاستقبال
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔒
+                </div>
+
+                <strong>
+                    خصوصية
+                </strong>
+
+                <span>
+                    معلوماتك تبقى على جهازك
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
 
 </main>
 
 
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
 <footer class="footer">
 
-© 2026 TABIBK — نظام حجز المواعيد الطبية
+    © 2026 TABIBK
+
+    <br>
+
+    نظام حجز المواعيد الطبية
 
 </footer>
 
 
+<!-- =========================================================
+     BOTTOM NAV
+========================================================= -->
+
+<nav class="bottom-nav">
+
+    <button
+        class="nav-item active"
+        onclick="goHome(this)">
+
+        <span>
+            🏠
+        </span>
+
+        الرئيسية
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        onclick="goBooking(this)">
+
+        <span>
+            📅
+        </span>
+
+        حجز موعد
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        onclick="showBookingStatus(this)">
+
+        <span>
+            📌
+        </span>
+
+        حجزي
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        onclick="openNotifications()">
+
+        <span>
+            🔔
+        </span>
+
+        إشعارات
+
+    </button>
+
+</nav>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
 <div
     class="toast"
-    id="toast"
-></div>
+    id="toast">
+</div>
 
 
 <script>
 
-/* =====================================================
-   TABIBK V2
-   DOCTORS DATABASE
-=====================================================
-
-   ⭐ لتعديل الأطباء:
-   غيّر الاسم والخبرة والتقييم والعيادة فقط.
-
-   مثال:
-
-   "طب عام":[
-      {
-          name:"اسم الطبيب",
-          experience:"10 سنوات خبرة",
-          rating:"4.9",
-          clinic:"اسم العيادة"
-      }
-   ]
-
-===================================================== */
-
+/* =========================================================
+   TABIBK V3
+   DATA
+========================================================= */
 
 const doctors = {
 
-"طب عام":[
+    "طب عام":[
 
-    {
-        name:"د. أحمد بن علي",
-        experience:"12 سنة خبرة",
-        rating:"4.9",
-        clinic:"عيادة الشفاء"
-    },
+        {
+            name:"د. أحمد بن علي",
+            experience:"12 سنة خبرة",
+            rating:"4.9",
+            clinic:"عيادة الشفاء"
+        },
 
-    {
-        name:"د. محمد قادري",
-        experience:"8 سنوات خبرة",
-        rating:"4.8",
-        clinic:"عيادة الأمل"
-    }
+        {
+            name:"د. محمد قادري",
+            experience:"8 سنوات خبرة",
+            rating:"4.8",
+            clinic:"عيادة الأمل"
+        }
 
-],
+    ],
 
+    "طب الأطفال":[
 
-"طب الأطفال":[
+        {
+            name:"د. سارة بن عيسى",
+            experience:"10 سنوات خبرة",
+            rating:"4.9",
+            clinic:"عيادة الطفل السعيد"
+        },
 
-    {
-        name:"د. سارة بن عيسى",
-        experience:"10 سنوات خبرة",
-        rating:"4.9",
-        clinic:"عيادة الطفل السعيد"
-    },
+        {
+            name:"د. أمين مرابط",
+            experience:"7 سنوات خبرة",
+            rating:"4.8",
+            clinic:"مركز الأطفال"
+        }
 
-    {
-        name:"د. أمين مرابط",
-        experience:"7 سنوات خبرة",
-        rating:"4.8",
-        clinic:"مركز الأطفال"
-    }
+    ],
 
-],
+    "طب الأسنان":[
 
+        {
+            name:"د. ياسين بن عمر",
+            experience:"11 سنة خبرة",
+            rating:"4.9",
+            clinic:"مركز ابتسامة"
+        },
 
-"طب الأسنان":[
+        {
+            name:"د. ليلى منصوري",
+            experience:"6 سنوات خبرة",
+            rating:"4.8",
+            clinic:"عيادة اللؤلؤة"
+        }
 
-    {
-        name:"د. ياسين بن عمر",
-        experience:"11 سنة خبرة",
-        rating:"4.9",
-        clinic:"مركز ابتسامة"
-    },
+    ],
 
-    {
-        name:"د. ليلى منصوري",
-        experience:"6 سنوات خبرة",
-        rating:"4.8",
-        clinic:"عيادة اللؤلؤة"
-    }
+    "أمراض القلب":[
 
-],
+        {
+            name:"د. خالد بوعلام",
+            experience:"15 سنة خبرة",
+            rating:"4.9",
+            clinic:"مركز القلب الطبي"
+        },
 
+        {
+            name:"د. نادية رحماني",
+            experience:"12 سنة خبرة",
+            rating:"4.8",
+            clinic:"عيادة القلب"
+        }
 
-"أمراض القلب":[
+    ],
 
-    {
-        name:"د. خالد بوعلام",
-        experience:"15 سنة خبرة",
-        rating:"4.9",
-        clinic:"مركز القلب الطبي"
-    },
+    "الأمراض الجلدية":[
 
-    {
-        name:"د. نادية رحماني",
-        experience:"12 سنة خبرة",
-        rating:"4.8",
-        clinic:"عيادة القلب"
-    }
+        {
+            name:"د. مريم قاسمي",
+            experience:"9 سنوات خبرة",
+            rating:"4.9",
+            clinic:"عيادة البشرة"
+        },
 
-],
+        {
+            name:"د. سامي حداد",
+            experience:"7 سنوات خبرة",
+            rating:"4.7",
+            clinic:"مركز الجلدية"
+        }
 
+    ],
 
-"الأمراض الجلدية":[
+    "العيون":[
 
-    {
-        name:"د. مريم قاسمي",
-        experience:"9 سنوات خبرة",
-        rating:"4.9",
-        clinic:"عيادة البشرة"
-    },
+        {
+            name:"د. عبد الرحمن سعيد",
+            experience:"14 سنة خبرة",
+            rating:"4.9",
+            clinic:"مركز النور للعيون"
+        },
 
-    {
-        name:"د. سامي حداد",
-        experience:"7 سنوات خبرة",
-        rating:"4.7",
-        clinic:"مركز الجلدية"
-    }
+        {
+            name:"د. إيمان بوزيان",
+            experience:"9 سنوات خبرة",
+            rating:"4.8",
+            clinic:"عيادة البصر"
+        }
 
-],
+    ],
 
+    "الأنف والأذن والحنجرة":[
 
-"العيون":[
+        {
+            name:"د. هشام كمال",
+            experience:"13 سنة خبرة",
+            rating:"4.9",
+            clinic:"مركز ENT الطبي"
+        },
 
-    {
-        name:"د. عبد الرحمن سعيد",
-        experience:"14 سنة خبرة",
-        rating:"4.9",
-        clinic:"مركز النور للعيون"
-    },
+        {
+            name:"د. ريم خالدي",
+            experience:"8 سنوات خبرة",
+            rating:"4.8",
+            clinic:"عيادة السمع"
+        }
 
-    {
-        name:"د. إيمان بوزيان",
-        experience:"9 سنوات خبرة",
-        rating:"4.8",
-        clinic:"عيادة البصر"
-    }
+    ],
 
-],
+    "أمراض النساء والتوليد":[
 
+        {
+            name:"د. نسرين بوعبدالله",
+            experience:"12 سنة خبرة",
+            rating:"4.9",
+            clinic:"عيادة الأم والطفل"
+        }
 
-"الأنف والأذن والحنجرة":[
+    ],
 
-    {
-        name:"د. هشام كمال",
-        experience:"13 سنة خبرة",
-        rating:"4.9",
-        clinic:"مركز ENT الطبي"
-    },
+    "العظام والمفاصل":[
 
-    {
-        name:"د. ريم خالدي",
-        experience:"8 سنوات خبرة",
-        rating:"4.8",
-        clinic:"عيادة السمع"
-    }
+        {
+            name:"د. كريم بلحاج",
+            experience:"16 سنة خبرة",
+            rating:"4.9",
+            clinic:"مركز العظام"
+        },
 
-],
+        {
+            name:"د. وليد شريف",
+            experience:"9 سنوات خبرة",
+            rating:"4.8",
+            clinic:"عيادة الحركة"
+        }
 
+    ],
 
-"أمراض النساء والتوليد":[
+    "أمراض الجهاز الهضمي":[
 
-    {
-        name:"د. نسرين بوعبدالله",
-        experience:"12 سنة خبرة",
-        rating:"4.9",
-        clinic:"عيادة الأم والطفل"
-    },
+        {
+            name:"د. مراد بن سالم",
+            experience:"13 سنة خبرة",
+            rating:"4.9",
+            clinic:"مركز الجهاز الهضمي"
+        },
 
-    {
-        name:"د. فاطمة زروقي",
-        experience:"10 سنوات خبرة",
-        rating:"4.8",
-        clinic:"مركز الحياة"
-    }
+        {
+            name:"د. حنان بوزيد",
+            experience:"8 سنوات خبرة",
+            rating:"4.8",
+            clinic:"عيادة الهضم"
+        }
 
-],
+    ],
 
+    "أمراض المسالك البولية":[
 
-"العظام والمفاصل":[
+        {
+            name:"د. طارق منصور",
+            experience:"12 سنة خبرة",
+            rating:"4.9",
+            clinic:"مركز المسالك"
+        },
 
-    {
-        name:"د. كريم بلحاج",
-        experience:"16 سنة خبرة",
-        rating:"4.9",
-        clinic:"مركز العظام"
-    },
+        {
+            name:"د. سميرة عابد",
+            experience:"9 سنوات خبرة",
+            rating:"4.8",
+            clinic:"عيادة الحياة"
+        }
 
-    {
-        name:"د. وليد شريف",
-        experience:"9 سنوات خبرة",
-        rating:"4.8",
-        clinic:"عيادة الحركة"
-    }
+    ],
 
-],
+    "الطب النفسي":[
 
+        {
+            name:"د. يوسف مرزوق",
+            experience:"14 سنة خبرة",
+            rating:"4.9",
+            clinic:"مركز التوازن النفسي"
+        },
 
-"أمراض الجهاز الهضمي":[
+        {
+            name:"د. هدى بن داود",
+            experience:"10 سنوات خبرة",
+            rating:"4.8",
+            clinic:"عيادة الراحة"
+        }
 
-    {
-        name:"د. مراد بن سالم",
-        experience:"13 سنة خبرة",
-        rating:"4.9",
-        clinic:"مركز الجهاز الهضمي"
-    },
-
-    {
-        name:"د. حنان بوزيد",
-        experience:"8 سنوات خبرة",
-        rating:"4.8",
-        clinic:"عيادة الهضم"
-    }
-
-],
-
-
-"أمراض المسالك البولية":[
-
-    {
-        name:"د. طارق منصور",
-        experience:"12 سنة خبرة",
-        rating:"4.9",
-        clinic:"مركز المسالك"
-    },
-
-    {
-        name:"د. سميرة عابد",
-        experience:"9 سنوات خبرة",
-        rating:"4.8",
-        clinic:"عيادة الحياة"
-    }
-
-],
-
-
-"الطب النفسي":[
-
-    {
-        name:"د. يوسف مرزوق",
-        experience:"14 سنة خبرة",
-        rating:"4.9",
-        clinic:"مركز التوازن النفسي"
-    },
-
-    {
-        name:"د. هدى بن داود",
-        experience:"10 سنوات خبرة",
-        rating:"4.8",
-        clinic:"عيادة الراحة"
-    }
-
-],
-
-
-"أخرى":[
-
-    {
-        name:"طبيب متخصص",
-        experience:"خبرة مهنية",
-        rating:"4.8",
-        clinic:"عيادة طبية"
-    },
-
-    {
-        name:"طبيب متخصص 2",
-        experience:"خبرة مهنية",
-        rating:"4.7",
-        clinic:"مركز طبي"
-    }
-
-]
+    ]
 
 };
 
 
-/* =====================================================
-   DATE MINIMUM
-===================================================== */
+/* =========================================================
+   TIME LIST
+========================================================= */
+
+const times = [
+
+    "08:00",
+    "08:30",
+    "09:00",
+    "09:30",
+    "10:00",
+    "10:30",
+    "11:00",
+    "11:30",
+    "14:00",
+    "14:30",
+    "15:00",
+    "15:30",
+    "16:00",
+    "16:30",
+    "17:00",
+    "17:30",
+    "18:00",
+    "18:30"
+
+];
+
+
+/* =========================================================
+   LOAD TIMES
+========================================================= */
+
+function loadTimes(){
+
+    const grid =
+        document.getElementById(
+            "timeGrid"
+        );
+
+    grid.innerHTML = "";
+
+    times.forEach(time=>{
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+        button.type = "button";
+
+        button.className =
+            "time-btn";
+
+        button.textContent =
+            time;
+
+        button.onclick = ()=>{
+
+            document
+                .querySelectorAll(
+                    ".time-btn"
+                )
+                .forEach(btn =>
+                    btn.classList.remove(
+                        "active"
+                    )
+                );
+
+            button.classList.add(
+                "active"
+            );
+
+            document
+                .getElementById(
+                    "appointmentTime"
+                )
+                .value = time;
+
+        };
+
+        grid.appendChild(button);
+
+    });
+
+}
+
+
+/* =========================================================
+   DATE
+========================================================= */
 
 function setMinDate(){
+
+    const date =
+        document.getElementById(
+            "appointmentDate"
+        );
 
     const today =
         new Date();
@@ -1773,66 +2975,101 @@ function setMinDate(){
             today.getDate()
         ).padStart(2,"0");
 
-    const todayString =
+    date.min =
         `${yyyy}-${mm}-${dd}`;
-
-    document
-        .getElementById("appointmentDate")
-        .min = todayString;
 
 }
 
 
-/* =====================================================
+/* =========================================================
+   SPECIALTY SHORTCUT
+========================================================= */
+
+function chooseSpecialty(
+    specialty,
+    button
+){
+
+    document
+        .querySelectorAll(
+            ".specialty"
+        )
+        .forEach(
+            b =>
+            b.classList.remove(
+                "active"
+            )
+        );
+
+    button.classList.add(
+        "active"
+    );
+
+    document
+        .getElementById(
+            "specialty"
+        )
+        .value =
+            specialty;
+
+    loadDoctors();
+
+    goBooking();
+
+}
+
+
+/* =========================================================
    LOAD DOCTORS
-===================================================== */
+========================================================= */
 
 function loadDoctors(){
 
     const specialty =
-        document
-        .getElementById("specialty")
-        .value;
+        document.getElementById(
+            "specialty"
+        ).value;
 
-    const doctorSelect =
-        document
-        .getElementById("doctorSelect");
+    const select =
+        document.getElementById(
+            "doctorSelect"
+        );
 
-    const doctorGroup =
-        document
-        .getElementById("doctorSelectGroup");
+    const group =
+        document.getElementById(
+            "doctorSelectGroup"
+        );
 
-    const doctorBox =
-        document
-        .getElementById("doctorBox");
+    const box =
+        document.getElementById(
+            "doctorBox"
+        );
 
-
-    doctorSelect.innerHTML =
+    select.innerHTML =
         '<option value="">اختر الطبيب</option>';
 
-    doctorBox.style.display =
+    box.style.display =
         "none";
-
 
     if(!specialty){
 
-        doctorGroup.style.display =
+        group.style.display =
             "none";
 
         return;
 
     }
 
-
     const list =
         doctors[specialty] || [];
-
 
     list.forEach(
         (doctor,index)=>{
 
             const option =
-                document.createElement("option");
+                document.createElement(
+                    "option"
+                );
 
             option.value =
                 index;
@@ -1840,21 +3077,19 @@ function loadDoctors(){
             option.textContent =
                 doctor.name;
 
-            doctorSelect.appendChild(
+            select.appendChild(
                 option
             );
 
         }
     );
 
-
-    doctorGroup.style.display =
+    group.style.display =
         "block";
-
 
     if(list.length === 1){
 
-        doctorSelect.value = "0";
+        select.value = "0";
 
         showDoctor();
 
@@ -1863,93 +3098,98 @@ function loadDoctors(){
 }
 
 
-/* =====================================================
+/* =========================================================
    SHOW DOCTOR
-===================================================== */
+========================================================= */
 
 function showDoctor(){
 
     const specialty =
-        document
-        .getElementById("specialty")
-        .value;
+        document.getElementById(
+            "specialty"
+        ).value;
 
     const index =
-        document
-        .getElementById("doctorSelect")
-        .value;
+        document.getElementById(
+            "doctorSelect"
+        ).value;
 
-    const doctorBox =
-        document
-        .getElementById("doctorBox");
-
+    const box =
+        document.getElementById(
+            "doctorBox"
+        );
 
     if(index === ""){
 
-        doctorBox.style.display =
+        box.style.display =
             "none";
 
         return;
 
     }
 
-
     const doctor =
         doctors[specialty][index];
 
-
     document
-        .getElementById("doctorDisplayName")
+        .getElementById(
+            "doctorDisplayName"
+        )
         .textContent =
             doctor.name;
 
-
     document
-        .getElementById("doctorDisplaySpecialty")
+        .getElementById(
+            "doctorDisplaySpecialty"
+        )
         .textContent =
             specialty;
 
+    document
+        .getElementById(
+            "doctorRating"
+        )
+        .textContent =
+            "⭐ " +
+            doctor.rating;
 
     document
-        .getElementById("doctorRating")
+        .getElementById(
+            "doctorExperience"
+        )
         .textContent =
-            "⭐ " + doctor.rating;
-
+            "🎓 " +
+            doctor.experience;
 
     document
-        .getElementById("doctorExperience")
+        .getElementById(
+            "doctorClinic"
+        )
         .textContent =
-            "🎓 " + doctor.experience;
+            "🏥 " +
+            doctor.clinic;
 
-
-    document
-        .getElementById("doctorClinic")
-        .textContent =
-            "🏥 " + doctor.clinic;
-
-
-    doctorBox.style.display =
+    box.style.display =
         "block";
 
 }
 
 
-/* =====================================================
-   GET SELECTED DOCTOR
-===================================================== */
+/* =========================================================
+   GET DOCTOR
+========================================================= */
 
 function getSelectedDoctor(){
 
     const specialty =
-        document
-        .getElementById("specialty")
-        .value;
+        document.getElementById(
+            "specialty"
+        ).value;
 
     const index =
-        document
-        .getElementById("doctorSelect")
-        .value;
-
+        document.getElementById(
+            "doctorSelect"
+        ).value;
 
     if(
         !specialty ||
@@ -1960,32 +3200,35 @@ function getSelectedDoctor(){
 
     }
 
-
-    return doctors[specialty][index];
+    return doctors[
+        specialty
+    ][index];
 
 }
 
 
-/* =====================================================
+/* =========================================================
    BOOKING NUMBER
-===================================================== */
+========================================================= */
 
 function generateBookingNumber(){
 
     const random =
         Math.floor(
             100000 +
-            Math.random()*900000
+            Math.random() *
+            900000
         );
 
-    return "TAB-" + random;
+    return "TAB-" +
+        random;
 
 }
 
 
-/* =====================================================
+/* =========================================================
    DATE FORMAT
-===================================================== */
+========================================================= */
 
 function formatDate(date){
 
@@ -1993,7 +3236,8 @@ function formatDate(date){
 
         const d =
             new Date(
-                date + "T00:00:00"
+                date +
+                "T00:00:00"
             );
 
         return d.toLocaleDateString(
@@ -2015,11 +3259,13 @@ function formatDate(date){
 }
 
 
-/* =====================================================
-   PHONE VALIDATION
-===================================================== */
+/* =========================================================
+   PHONE
+========================================================= */
 
-function validAlgerianPhone(phone){
+function validAlgerianPhone(
+    phone
+){
 
     const clean =
         phone.replace(
@@ -2027,91 +3273,118 @@ function validAlgerianPhone(phone){
             ""
         );
 
-    return /^0[5-7][0-9]{8}$/.test(
-        clean
-    );
+    return /^0[5-7][0-9]{8}$/
+        .test(clean);
 
 }
 
 
-/* =====================================================
+/* =========================================================
    TOAST
-===================================================== */
+========================================================= */
 
-function showToast(message){
+function showToast(
+    message
+){
 
     const toast =
-        document.getElementById("toast");
+        document.getElementById(
+            "toast"
+        );
 
     toast.textContent =
         message;
 
-    toast.classList.add("show");
-
+    toast.classList.add(
+        "show"
+    );
 
     setTimeout(
         ()=>{
-            toast.classList.remove("show");
+            toast.classList.remove(
+                "show"
+            );
         },
-        2500
+        2600
     );
 
 }
 
 
-/* =====================================================
+/* =========================================================
+   SAVE BOOKING
+========================================================= */
+
+function saveBooking(data){
+
+    localStorage.setItem(
+        "tabibk_booking",
+        JSON.stringify(data)
+    );
+
+}
+
+
+/* =========================================================
    SEND BOOKING
-===================================================== */
+========================================================= */
 
 function sendBooking(){
 
     const name =
         document
-        .getElementById("patientName")
+        .getElementById(
+            "patientName"
+        )
         .value.trim();
-
 
     const phone =
         document
-        .getElementById("patientPhone")
+        .getElementById(
+            "patientPhone"
+        )
         .value.trim();
-
 
     const specialty =
         document
-        .getElementById("specialty")
+        .getElementById(
+            "specialty"
+        )
         .value;
-
 
     const doctor =
         getSelectedDoctor();
 
-
     const date =
         document
-        .getElementById("appointmentDate")
+        .getElementById(
+            "appointmentDate"
+        )
         .value;
-
 
     const time =
         document
-        .getElementById("appointmentTime")
+        .getElementById(
+            "appointmentTime"
+        )
         .value;
-
 
     const type =
         document
-        .getElementById("appointmentType")
+        .getElementById(
+            "appointmentType"
+        )
         .value;
-
 
     const notes =
         document
-        .getElementById("notes")
+        .getElementById(
+            "notes"
+        )
         .value.trim();
 
 
-    /* ================= VALIDATION ================= */
+    /* VALIDATION */
 
     if(!name){
 
@@ -2120,7 +3393,9 @@ function sendBooking(){
         );
 
         document
-        .getElementById("patientName")
+        .getElementById(
+            "patientName"
+        )
         .focus();
 
         return;
@@ -2128,14 +3403,20 @@ function sendBooking(){
     }
 
 
-    if(!validAlgerianPhone(phone)){
+    if(
+        !validAlgerianPhone(
+            phone
+        )
+    ){
 
         showToast(
             "⚠️ أدخل رقم هاتف جزائري صحيح"
         );
 
         document
-        .getElementById("patientPhone")
+        .getElementById(
+            "patientPhone"
+        )
         .focus();
 
         return;
@@ -2187,17 +3468,54 @@ function sendBooking(){
     }
 
 
-    /* ================= BOOKING ================= */
+    /* CREATE BOOKING */
 
     const bookingNumber =
         generateBookingNumber();
-
 
     const formattedDate =
         formatDate(date);
 
 
-    /* ================= SAVE DATA ================= */
+    const booking = {
+
+        id:bookingNumber,
+
+        patientName:name,
+
+        patientPhone:phone,
+
+        specialty:specialty,
+
+        doctor:doctor.name,
+
+        clinic:doctor.clinic,
+
+        date:date,
+
+        formattedDate:formattedDate,
+
+        time:time,
+
+        type:type,
+
+        notes:notes,
+
+        status:"pending",
+
+        createdAt:
+            new Date()
+            .toISOString()
+
+    };
+
+
+    /* SAVE */
+
+    saveBooking(
+        booking
+    );
+
 
     localStorage.setItem(
         "tabibk_patient_name",
@@ -2209,13 +3527,8 @@ function sendBooking(){
         phone
     );
 
-    localStorage.setItem(
-        "tabibk_last_booking",
-        bookingNumber
-    );
 
-
-    /* ================= WHATSAPP ================= */
+    /* WHATSAPP */
 
     const message =
 
@@ -2231,11 +3544,12 @@ ${bookingNumber}
 👤 *معلومات المريض*
 
 الاسم: ${name}
+
 📱 الهاتف: ${phone}
 
 ━━━━━━━━━━━━━━━━
 
-🩺 *الاختصاص*
+🩺 *التخصص*
 
 ${specialty}
 
@@ -2267,7 +3581,11 @@ ${notes || "لا توجد ملاحظات"}
 
 ━━━━━━━━━━━━━━━━
 
-🔔 *الرجاء تأكيد أو رفض الموعد*
+🔔 *حالة الطلب الحالية*
+
+⏳ في انتظار تأكيد الطبيب
+
+الرجاء تأكيد أو رفض الموعد.
 
 شكراً لاستخدام TABIBK 🩺`;
 
@@ -2285,32 +3603,40 @@ ${notes || "لا توجد ملاحظات"}
         );
 
 
-    /* ================= SUCCESS ================= */
+    /* SUCCESS */
 
     document
-        .getElementById("bookingNumber")
+        .getElementById(
+            "bookingNumber"
+        )
         .textContent =
             bookingNumber;
 
 
     document
-        .getElementById("bookingForm")
+        .getElementById(
+            "bookingForm"
+        )
         .style.display =
             "none";
 
 
     document
-        .getElementById("successBox")
+        .getElementById(
+            "successBox"
+        )
         .style.display =
             "block";
 
 
-    /* ================= SOUND ================= */
+    addNotification(
+        "تم إرسال طلب الحجز " +
+        bookingNumber
+    );
+
 
     playSuccessSound();
 
-
-    /* ================= OPEN WHATSAPP ================= */
 
     setTimeout(
         ()=>{
@@ -2323,9 +3649,9 @@ ${notes || "لا توجد ملاحظات"}
 }
 
 
-/* =====================================================
+/* =========================================================
    SUCCESS SOUND
-===================================================== */
+========================================================= */
 
 function playSuccessSound(){
 
@@ -2344,32 +3670,29 @@ function playSuccessSound(){
         const gain =
             ctx.createGain();
 
-
         oscillator.frequency.value =
             700;
 
         oscillator.type =
             "sine";
 
-
         gain.gain.setValueAtTime(
             .15,
             ctx.currentTime
         );
-
 
         gain.gain.exponentialRampToValueAtTime(
             .001,
             ctx.currentTime + .5
         );
 
-
-        oscillator.connect(gain);
+        oscillator.connect(
+            gain
+        );
 
         gain.connect(
             ctx.destination
         );
-
 
         oscillator.start();
 
@@ -2382,17 +3705,18 @@ function playSuccessSound(){
 }
 
 
-/* =====================================================
-   COPY BOOKING NUMBER
-===================================================== */
+/* =========================================================
+   COPY
+========================================================= */
 
 function copyBookingNumber(){
 
     const number =
         document
-        .getElementById("bookingNumber")
+        .getElementById(
+            "bookingNumber"
+        )
         .textContent;
-
 
     if(
         navigator.clipboard
@@ -2413,66 +3737,86 @@ function copyBookingNumber(){
 }
 
 
-/* =====================================================
+/* =========================================================
    NEW BOOKING
-===================================================== */
+========================================================= */
 
 function newBooking(){
 
     document
-        .getElementById("successBox")
+        .getElementById(
+            "successBox"
+        )
         .style.display =
-        "none";
-
+            "none";
 
     document
-        .getElementById("bookingForm")
+        .getElementById(
+            "bookingForm"
+        )
         .style.display =
-        "block";
-
+            "block";
 
     document
-        .getElementById("specialty")
+        .getElementById(
+            "specialty"
+        )
         .value = "";
 
-
     document
-        .getElementById("doctorSelectGroup")
+        .getElementById(
+            "doctorSelectGroup"
+        )
         .style.display =
-        "none";
-
+            "none";
 
     document
-        .getElementById("doctorBox")
+        .getElementById(
+            "doctorBox"
+        )
         .style.display =
-        "none";
-
+            "none";
 
     document
-        .getElementById("appointmentDate")
+        .getElementById(
+            "appointmentDate"
+        )
         .value = "";
 
-
     document
-        .getElementById("appointmentTime")
+        .getElementById(
+            "appointmentTime"
+        )
         .value = "";
 
-
     document
-        .getElementById("appointmentType")
-        .selectedIndex = 0;
-
-
-    document
-        .getElementById("notes")
+        .getElementById(
+            "notes"
+        )
         .value = "";
+
+    document
+        .querySelectorAll(
+            ".time-btn"
+        )
+        .forEach(
+            btn =>
+            btn.classList.remove(
+                "active"
+            )
+        );
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 }
 
 
-/* =====================================================
-   LOAD SAVED PATIENT
-===================================================== */
+/* =========================================================
+   SAVED PATIENT
+========================================================= */
 
 function loadSavedPatient(){
 
@@ -2481,27 +3825,28 @@ function loadSavedPatient(){
             "tabibk_patient_name"
         );
 
-
     const phone =
         localStorage.getItem(
             "tabibk_patient_phone"
         );
 
-
     if(name){
 
         document
-        .getElementById("patientName")
+        .getElementById(
+            "patientName"
+        )
         .value =
             name;
 
     }
 
-
     if(phone){
 
         document
-        .getElementById("patientPhone")
+        .getElementById(
+            "patientPhone"
+        )
         .value =
             phone;
 
@@ -2510,13 +3855,528 @@ function loadSavedPatient(){
 }
 
 
-/* =====================================================
+/* =========================================================
+   BOOKING STATUS
+========================================================= */
+
+function showBookingStatus(){
+
+    const booking =
+        localStorage.getItem(
+            "tabibk_booking"
+        );
+
+    if(!booking){
+
+        showToast(
+            "📌 لا يوجد حجز محفوظ حالياً"
+        );
+
+        goBooking();
+
+        return;
+
+    }
+
+    const data =
+        JSON.parse(
+            booking
+        );
+
+
+    document
+        .getElementById(
+            "bookingForm"
+        )
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById(
+            "successBox"
+        )
+        .style.display =
+            "block";
+
+
+    document
+        .getElementById(
+            "bookingNumber"
+        )
+        .textContent =
+            data.id;
+
+
+    const statusCard =
+        document.getElementById(
+            "statusCard"
+        );
+
+    statusCard.style.display =
+        "block";
+
+
+    updateStatus(
+        data.status
+    );
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   UPDATE STATUS
+========================================================= */
+
+function updateStatus(status){
+
+    const badge =
+        document.getElementById(
+            "statusBadge"
+        );
+
+    if(status === "accepted"){
+
+        badge.textContent =
+            "✅ تم قبول الموعد";
+
+        badge.style.background =
+            "#d1e7dd";
+
+        badge.style.color =
+            "#0f5132";
+
+    }
+
+    else if(status === "rejected"){
+
+        badge.textContent =
+            "❌ تم رفض الموعد";
+
+        badge.style.background =
+            "#f8d7da";
+
+        badge.style.color =
+            "#842029";
+
+    }
+
+    else{
+
+        badge.textContent =
+            "⏳ قيد الانتظار";
+
+        badge.style.background =
+            "#fff3cd";
+
+        badge.style.color =
+            "#856404";
+
+    }
+
+}
+
+
+/* =========================================================
+   NOTIFICATIONS
+========================================================= */
+
+function addNotification(
+    text
+){
+
+    let notifications =
+        JSON.parse(
+            localStorage.getItem(
+                "tabibk_notifications"
+            ) || "[]"
+        );
+
+
+    notifications.unshift({
+
+        text:text,
+
+        time:
+            new Date()
+            .toLocaleTimeString(
+                "ar-DZ",
+                {
+                    hour:"2-digit",
+                    minute:"2-digit"
+                }
+            )
+
+    });
+
+
+    notifications =
+        notifications.slice(
+            0,
+            10
+        );
+
+
+    localStorage.setItem(
+        "tabibk_notifications",
+        JSON.stringify(
+            notifications
+        )
+    );
+
+
+    loadNotifications();
+
+}
+
+
+/* =========================================================
+   LOAD NOTIFICATIONS
+========================================================= */
+
+function loadNotifications(){
+
+    const list =
+        document.getElementById(
+            "notificationList"
+        );
+
+    const notifications =
+        JSON.parse(
+            localStorage.getItem(
+                "tabibk_notifications"
+            ) || "[]"
+        );
+
+
+    if(
+        notifications.length === 0
+    ){
+
+        list.innerHTML = `
+
+            <div class="notification">
+
+                🩺 لا توجد إشعارات جديدة
+
+                <small>
+                    ستظهر هنا تحديثات الحجز
+                </small>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    list.innerHTML = "";
+
+
+    notifications.forEach(
+        item=>{
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.className =
+                "notification";
+
+            div.innerHTML = `
+
+                🔔 ${item.text}
+
+                <small>
+                    ${item.time}
+                </small>
+
+            `;
+
+            list.appendChild(
+                div
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   NOTIFICATION PANEL
+========================================================= */
+
+function openNotifications(){
+
+    loadNotifications();
+
+    document
+        .getElementById(
+            "notificationPanel"
+        )
+        .classList.add(
+            "show"
+        );
+
+}
+
+
+function closeNotifications(){
+
+    document
+        .getElementById(
+            "notificationPanel"
+        )
+        .classList.remove(
+            "show"
+        );
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function searchDoctors(){
+
+    const query =
+        document
+        .getElementById(
+            "searchDoctor"
+        )
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    if(!query){
+
+        return;
+
+    }
+
+
+    const found =
+        Object.keys(
+            doctors
+        ).find(
+            specialty =>
+                specialty
+                .toLowerCase()
+                .includes(query)
+        );
+
+
+    if(found){
+
+        document
+            .getElementById(
+                "specialty"
+            )
+            .value =
+                found;
+
+        loadDoctors();
+
+        goBooking();
+
+        showToast(
+            "🔎 تم العثور على تخصص " +
+            found
+        );
+
+        return;
+
+    }
+
+
+    for(
+        const specialty
+        in doctors
+    ){
+
+        const doctor =
+            doctors[
+                specialty
+            ].find(
+                d =>
+                    d.name
+                    .toLowerCase()
+                    .includes(query)
+            );
+
+
+        if(doctor){
+
+            document
+                .getElementById(
+                    "specialty"
+                )
+                .value =
+                    specialty;
+
+            loadDoctors();
+
+            const index =
+                doctors[
+                    specialty
+                ].indexOf(
+                    doctor
+                );
+
+            document
+                .getElementById(
+                    "doctorSelect"
+                )
+                .value =
+                    index;
+
+            showDoctor();
+
+            goBooking();
+
+            showToast(
+                "👨‍⚕️ تم العثور على " +
+                doctor.name
+            );
+
+            return;
+
+        }
+
+    }
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function goHome(
+    button
+){
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+    setActiveNav(
+        button
+    );
+
+}
+
+
+function goBooking(
+    button
+){
+
+    const card =
+        document.querySelectorAll(
+            ".card"
+        )[1];
+
+    if(card){
+
+        card.scrollIntoView({
+
+            behavior:"smooth",
+
+            block:"start"
+
+        });
+
+    }
+
+    if(button){
+
+        setActiveNav(
+            button
+        );
+
+    }
+
+}
+
+
+function setActiveNav(
+    button
+){
+
+    document
+        .querySelectorAll(
+            ".nav-item"
+        )
+        .forEach(
+            item =>
+            item.classList.remove(
+                "active"
+            )
+        );
+
+    if(button){
+
+        button.classList.add(
+            "active"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   DATE UPDATE
+========================================================= */
+
+function updateDate(){
+
+    const value =
+        document
+        .getElementById(
+            "appointmentDate"
+        )
+        .value;
+
+    if(value){
+
+        showToast(
+            "📅 تم اختيار " +
+            formatDate(value)
+        );
+
+    }
+
+}
+
+
+/* =========================================================
    INIT
-===================================================== */
+========================================================= */
 
 setMinDate();
 
+loadTimes();
+
 loadSavedPatient();
+
+loadNotifications();
 
 
 </script>

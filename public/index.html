@@ -3,787 +3,961 @@
 
 <head>
 
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-  <meta name="theme-color"
-        content="#fbbf24">
+<meta name="theme-color" content="#111111">
 
-  <title>Virexo Market</title>
+<title>TABIBK | حجز موعد طبي</title>
 
-  <link rel="preconnect"
-        href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-  <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"
-        rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap"
+rel="stylesheet">
+
+<style>
+
+/* =====================================================
+   TABIBK V2
+   PREMIUM MEDICAL BOOKING SYSTEM
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Cairo',sans-serif;
+}
+
+:root{
+
+    --gold:#d4af37;
+    --gold-light:#f5d76e;
+    --gold-dark:#9b7610;
+
+    --black:#111111;
+    --black-2:#242424;
+
+    --silver:#eeeeee;
+    --silver-2:#d5d5d5;
+
+    --green:#16a05d;
+    --red:#dc3545;
+    --blue:#2878f0;
+
+    --bg:#eeeeee;
+    --card:#ffffff;
+
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(212,175,55,.20),
+            transparent 32%
+        ),
+
+        linear-gradient(
+            135deg,
+            #f8f8f8,
+            #dedede
+        );
+
+    color:#292929;
+
+}
 
 
-  <style>
+/* =====================================================
+   HEADER
+===================================================== */
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+.header{
+
+    position:relative;
+
+    padding:25px 15px 70px;
+
+    text-align:center;
+
+    color:white;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #444,
+            transparent 45%
+        ),
+
+        linear-gradient(
+            145deg,
+            #090909,
+            #292929,
+            #0b0b0b
+        );
+
+    border-bottom:4px solid var(--gold);
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,.30);
+
+}
+
+
+.logo{
+
+    width:82px;
+    height:82px;
+
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    font-size:38px;
+
+    color:var(--gold-dark);
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #cfcfcf
+        );
+
+    border:4px solid var(--gold);
+
+    box-shadow:
+        0 8px 0 #806311,
+        0 15px 30px rgba(0,0,0,.45);
+
+}
+
+
+.header h1{
+
+    margin-top:17px;
+
+    font-size:28px;
+
+    font-weight:900;
+
+    letter-spacing:.3px;
+
+}
+
+
+.header h1 span{
+
+    color:var(--gold-light);
+
+}
+
+
+.header p{
+
+    margin-top:5px;
+
+    color:#ddd;
+
+    font-size:14px;
+
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container{
+
+    width:94%;
+
+    max-width:720px;
+
+    margin:-35px auto 40px;
+
+    position:relative;
+
+}
+
+
+/* =====================================================
+   MAIN CARD
+===================================================== */
+
+.card{
+
+    background:rgba(255,255,255,.97);
+
+    border-radius:26px;
+
+    padding:25px;
+
+    border:1px solid var(--gold);
+
+    box-shadow:
+
+        0 18px 45px rgba(0,0,0,.17),
+
+        inset 0 1px 0 white;
+
+}
+
+
+/* =====================================================
+   SECTION TITLE
+===================================================== */
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:23px;
+
+}
+
+
+.section-title h2{
+
+    font-size:22px;
+
+    font-weight:900;
+
+}
+
+
+.gold-line{
+
+    width:95px;
+
+    height:4px;
+
+    margin:8px auto;
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #aaa,
+            var(--gold),
+            #aaa
+        );
+
+}
+
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-group{
+
+    margin-bottom:17px;
+
+}
+
+
+label{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    font-size:14px;
+
+    font-weight:800;
+
+}
+
+
+.required{
+
+    color:#c39717;
+
+}
+
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:#f4f4f4;
+
+    border:2px solid #ddd;
+
+    font-size:15px;
+
+    color:#333;
+
+    transition:.25s;
+
+    box-shadow:
+        inset 0 2px 5px rgba(0,0,0,.07);
+
+}
+
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    background:#fff;
+
+    border-color:var(--gold);
+
+    box-shadow:
+        0 0 0 4px rgba(212,175,55,.13);
+
+}
+
+
+textarea{
+
+    min-height:95px;
+
+    resize:none;
+
+}
+
+
+.row{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:14px;
+
+}
+
+
+/* =====================================================
+   DOCTOR CARD
+===================================================== */
+
+.doctor-box{
+
+    display:none;
+
+    margin:5px 0 20px;
+
+    padding:16px;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffaf0,
+            #eeeeee
+        );
+
+    border:1px solid #ddd;
+
+    border-right:5px solid var(--gold);
+
+    box-shadow:
+        0 7px 18px rgba(0,0,0,.08);
+
+}
+
+
+.doctor-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+}
+
+
+.doctor-avatar{
+
+    width:58px;
+    height:58px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:27px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff,
+            #ccc
+        );
+
+    border:2px solid var(--gold);
+
+}
+
+
+.doctor-info{
+
+    flex:1;
+
+}
+
+
+.doctor-info h3{
+
+    font-size:16px;
+
+    font-weight:900;
+
+}
+
+
+.doctor-info p{
+
+    color:#777;
+
+    font-size:12px;
+
+    margin-top:2px;
+
+}
+
+
+.doctor-meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:7px;
+
+    margin-top:12px;
+
+}
+
+
+.badge{
+
+    padding:5px 9px;
+
+    border-radius:20px;
+
+    background:white;
+
+    border:1px solid #ddd;
+
+    font-size:11px;
+
+    font-weight:800;
+
+}
+
+
+.rating{
+
+    color:#b18712;
+
+}
+
+
+/* =====================================================
+   QUICK INFO
+===================================================== */
+
+.quick-info{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:9px;
+
+    margin:18px 0;
+
+}
+
+
+.quick-item{
+
+    padding:12px 6px;
+
+    text-align:center;
+
+    border-radius:14px;
+
+    background:#f5f5f5;
+
+    border:1px solid #ddd;
+
+}
+
+
+.quick-item strong{
+
+    display:block;
+
+    font-size:17px;
+
+    color:var(--gold-dark);
+
+}
+
+
+.quick-item span{
+
+    font-size:10px;
+
+    color:#777;
+
+}
+
+
+/* =====================================================
+   INFO BOX
+===================================================== */
+
+.info-box{
+
+    margin:20px 0;
+
+    padding:15px;
+
+    border-radius:17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #f0f0f0
+        );
+
+    border-right:5px solid var(--gold);
+
+}
+
+
+.info-item{
+
+    margin:6px 0;
+
+    font-size:12px;
+
+}
+
+
+/* =====================================================
+   SUBMIT BUTTON
+===================================================== */
+
+.submit-btn{
+
+    width:100%;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:white;
+
+    padding:17px;
+
+    border-radius:16px;
+
+    font-size:17px;
+
+    font-weight:900;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f5d76e,
+            #d4af37 45%,
+            #a67c00
+        );
+
+    box-shadow:
+
+        0 7px 0 #765800,
+
+        0 12px 20px rgba(0,0,0,.22),
+
+        inset 0 2px 1px
+        rgba(255,255,255,.6);
+
+    transition:.15s;
+
+}
+
+
+.submit-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+.submit-btn:active{
+
+    transform:translateY(6px);
+
+    box-shadow:
+        0 2px 0 #765800;
+
+}
+
+
+.submit-btn:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+.whatsapp{
+
+    margin-top:17px;
+
+    padding:12px;
+
+    text-align:center;
+
+    border-radius:14px;
+
+    background:#f4f4f4;
+
+    border:1px solid #ddd;
+
+    font-size:12px;
+
+}
+
+
+.whatsapp span{
+
+    color:var(--green);
+
+    font-weight:900;
+
+}
+
+
+/* =====================================================
+   SUCCESS
+===================================================== */
+
+.success{
+
+    display:none;
+
+    text-align:center;
+
+    padding:15px 5px 10px;
+
+}
+
+
+.success-icon{
+
+    width:80px;
+    height:80px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    font-size:40px;
+
+    color:#a77e0c;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff,
+            #cfcfcf
+        );
+
+    border:3px solid var(--gold);
+
+    box-shadow:
+        0 7px 0 #888;
+
+}
+
+
+.success h2{
+
+    margin-top:17px;
+
+    font-size:22px;
+
+}
+
+
+.success p{
+
+    color:#777;
+
+    margin-top:7px;
+
+    font-size:13px;
+
+}
+
+
+.booking-number{
+
+    margin:18px auto;
+
+    padding:13px;
+
+    max-width:280px;
+
+    border-radius:14px;
+
+    background:#f4f4f4;
+
+    border:1px dashed var(--gold);
+
+}
+
+
+.booking-number strong{
+
+    display:block;
+
+    color:var(--gold-dark);
+
+    font-size:20px;
+
+    letter-spacing:2px;
+
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+===================================================== */
+
+.actions{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:10px;
+
+    margin-top:15px;
+
+}
+
+
+.action-btn{
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:13px;
+
+    cursor:pointer;
+
+    font-weight:800;
+
+    font-size:13px;
+
+}
+
+
+.new-btn{
+
+    background:#222;
+
+    color:white;
+
+}
+
+
+.copy-btn{
+
+    background:#e8e8e8;
+
+    color:#333;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:11px;
+
+    padding:5px 0 30px;
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+
+    position:fixed;
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:
+        translate(-50%,120px);
+
+    width:90%;
+
+    max-width:380px;
+
+    padding:13px 16px;
+
+    border-radius:14px;
+
+    color:white;
+
+    background:#222;
+
+    text-align:center;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    z-index:9999;
+
+    opacity:0;
+
+    transition:.35s;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.3);
+
+}
+
+
+.toast.show{
+
+    transform:
+        translate(-50%,0);
+
+    opacity:1;
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:600px){
+
+    .header{
+
+        padding-top:20px;
+
     }
 
-    body {
-      font-family: Cairo, sans-serif;
-      background: #f5f7fb;
-      color: #111827;
+    .header h1{
+
+        font-size:23px;
+
     }
 
-    button,
+    .container{
+
+        width:95%;
+
+    }
+
+    .card{
+
+        padding:19px;
+
+        border-radius:21px;
+
+    }
+
+    .row{
+
+        grid-template-columns:1fr;
+
+        gap:0;
+
+    }
+
+    .quick-info{
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+    }
+
     input,
     select,
-    textarea {
-      font-family: inherit;
-    }
+    textarea{
 
-    button {
-      cursor: pointer;
-    }
-
-
-    /* HEADER */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: white;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .header {
-      max-width: 1200px;
-      height: 70px;
-      margin: auto;
-      padding: 0 18px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      font-size: 21px;
-      font-weight: 900;
-    }
-
-    .logo-icon {
-      width: 44px;
-      height: 44px;
-
-      display: grid;
-      place-items: center;
-
-      background: linear-gradient(
-        135deg,
-        #ffd84d,
-        #f59e0b
-      );
-
-      border-radius: 14px;
-
-      font-size: 23px;
-    }
-
-    .logo span {
-      color: #2563eb;
-    }
-
-
-    .sell-btn {
-      border: none;
-
-      background: linear-gradient(
-        135deg,
-        #fbbf24,
-        #f59e0b
-      );
-
-      padding: 11px 17px;
-
-      border-radius: 12px;
-
-      font-weight: 900;
-    }
-
-
-    /* HERO */
-
-    .hero {
-
-      background:
-        radial-gradient(
-          circle at 10% 20%,
-          rgba(251,191,36,.25),
-          transparent 30%
-        ),
-
-        radial-gradient(
-          circle at 90% 10%,
-          rgba(37,99,235,.20),
-          transparent 30%
-        ),
-
-        linear-gradient(
-          135deg,
-          #111827,
-          #1e293b
-        );
-
-      color: white;
-
-      padding: 55px 18px 65px;
-
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(
-        30px,
-        6vw,
-        52px
-      );
-
-      font-weight: 900;
-
-      margin-bottom: 12px;
-    }
-
-    .hero strong {
-      color: #fbbf24;
-    }
-
-    .hero p {
-      color: #d1d5db;
-
-      margin-bottom: 28px;
-    }
-
-
-    /* SEARCH */
-
-    .search {
-      max-width: 760px;
-      margin: auto;
-
-      background: white;
-
-      padding: 7px;
-
-      border-radius: 17px;
-
-      display: flex;
-
-      gap: 7px;
-    }
-
-    .search input {
-
-      flex: 1;
-
-      border: none;
-
-      outline: none;
-
-      padding: 13px;
-
-      font-size: 14px;
-
-      color: #111827;
-    }
-
-    .search button {
-
-      border: none;
-
-      background: #2563eb;
-
-      color: white;
-
-      padding: 0 22px;
-
-      border-radius: 12px;
-
-      font-weight: 800;
-    }
-
-
-    /* MAIN */
-
-    .container {
-
-      max-width: 1200px;
-
-      margin: auto;
-
-      padding: 35px 18px 70px;
-    }
-
-
-    /* CATEGORIES */
-
-    .categories {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(8,1fr);
-
-      gap: 10px;
-
-      margin-bottom: 35px;
-    }
-
-    .category {
-
-      background: white;
-
-      border: 1px solid #e5e7eb;
-
-      border-radius: 15px;
-
-      padding: 15px 5px;
-
-      text-align: center;
-
-      transition: .2s;
-    }
-
-    .category:hover,
-    .category.active {
-
-      border-color: #fbbf24;
-
-      transform:
-        translateY(-3px);
+        font-size:14px;
 
     }
 
-    .category-icon {
+}
 
-      font-size: 26px;
-
-      margin-bottom: 5px;
-    }
-
-    .category strong {
-
-      font-size: 12px;
-    }
-
-
-    /* TITLE */
-
-    .title {
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      margin-bottom: 15px;
-    }
-
-    .title h2 {
-
-      font-size: 22px;
-
-      font-weight: 900;
-    }
-
-    .count {
-
-      color: #6b7280;
-
-      font-size: 13px;
-    }
-
-
-    /* FILTER */
-
-    .filters {
-
-      display: flex;
-
-      gap: 10px;
-
-      margin-bottom: 20px;
-
-      flex-wrap: wrap;
-    }
-
-    select {
-
-      border: 1px solid #e5e7eb;
-
-      background: white;
-
-      padding: 10px 13px;
-
-      border-radius: 11px;
-
-      outline: none;
-    }
-
-
-    /* PRODUCTS */
-
-    .products {
-
-      display: grid;
-
-      grid-template-columns:
-        repeat(4,1fr);
-
-      gap: 17px;
-    }
-
-    .product {
-
-      background: white;
-
-      border-radius: 18px;
-
-      overflow: hidden;
-
-      border: 1px solid #e5e7eb;
-
-      box-shadow:
-        0 7px 22px
-        rgba(0,0,0,.05);
-
-      transition: .2s;
-    }
-
-    .product:hover {
-
-      transform:
-        translateY(-5px);
-
-      box-shadow:
-        0 15px 35px
-        rgba(0,0,0,.10);
-    }
-
-
-    .image {
-
-      height: 200px;
-
-      background: #e5e7eb;
-
-      display: grid;
-
-      place-items: center;
-
-      overflow: hidden;
-    }
-
-    .image img {
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: cover;
-    }
-
-    .placeholder {
-
-      font-size: 60px;
-    }
-
-
-    .product-body {
-
-      padding: 14px;
-    }
-
-    .product-name {
-
-      font-weight: 800;
-
-      margin-bottom: 6px;
-
-      white-space: nowrap;
-
-      overflow: hidden;
-
-      text-overflow: ellipsis;
-    }
-
-    .price {
-
-      color: #2563eb;
-
-      font-size: 18px;
-
-      font-weight: 900;
-
-      margin-bottom: 6px;
-    }
-
-    .location {
-
-      color: #6b7280;
-
-      font-size: 12px;
-
-      margin-bottom: 12px;
-    }
-
-    .details {
-
-      width: 100%;
-
-      border: none;
-
-      background: #eff6ff;
-
-      color: #2563eb;
-
-      padding: 9px;
-
-      border-radius: 10px;
-
-      font-weight: 800;
-    }
-
-
-    /* EMPTY */
-
-    .empty {
-
-      display: none;
-
-      background: white;
-
-      text-align: center;
-
-      padding: 55px 20px;
-
-      border-radius: 18px;
-
-      border: 1px dashed #d1d5db;
-    }
-
-    .empty-icon {
-
-      font-size: 50px;
-
-      margin-bottom: 10px;
-    }
-
-
-    /* MODAL */
-
-    .modal {
-
-      position: fixed;
-
-      inset: 0;
-
-      background:
-        rgba(15,23,42,.70);
-
-      display: none;
-
-      align-items: center;
-
-      justify-content: center;
-
-      padding: 18px;
-
-      z-index: 3000;
-    }
-
-    .modal.show {
-
-      display: flex;
-    }
-
-
-    .modal-box {
-
-      width:
-        min(600px,100%);
-
-      max-height: 92vh;
-
-      overflow-y: auto;
-
-      background: white;
-
-      border-radius: 22px;
-    }
-
-
-    .modal-head {
-
-      padding: 18px;
-
-      display: flex;
-
-      align-items: center;
-
-      justify-content: space-between;
-
-      border-bottom:
-        1px solid #e5e7eb;
-    }
-
-    .modal-head h2 {
-
-      font-size: 20px;
-    }
-
-    .close {
-
-      width: 38px;
-      height: 38px;
-
-      border: none;
-
-      background: #f3f4f6;
-
-      border-radius: 10px;
-
-      font-size: 20px;
-    }
-
-
-    .form {
-
-      padding: 20px;
-    }
-
-    .group {
-
-      margin-bottom: 14px;
-    }
-
-    label {
-
-      display: block;
-
-      font-size: 13px;
-
-      font-weight: 800;
-
-      margin-bottom: 6px;
-    }
-
-    .control {
-
-      width: 100%;
-
-      border: 1px solid #e5e7eb;
-
-      background: #fafafa;
-
-      padding: 12px;
-
-      border-radius: 11px;
-
-      outline: none;
-    }
-
-    textarea.control {
-
-      min-height: 100px;
-
-      resize: vertical;
-    }
-
-
-    .grid {
-
-      display: grid;
-
-      grid-template-columns:
-        1fr 1fr;
-
-      gap: 12px;
-    }
-
-
-    .submit {
-
-      width: 100%;
-
-      border: none;
-
-      padding: 14px;
-
-      border-radius: 12px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #fbbf24,
-          #f59e0b
-        );
-
-      font-weight: 900;
-
-      font-size: 15px;
-    }
-
-
-    /* TOAST */
-
-    .toast {
-
-      position: fixed;
-
-      bottom: 25px;
-
-      left: 50%;
-
-      transform:
-        translateX(-50%)
-        translateY(100px);
-
-      background: #111827;
-
-      color: white;
-
-      padding: 12px 18px;
-
-      border-radius: 12px;
-
-      opacity: 0;
-
-      transition: .3s;
-
-      z-index: 5000;
-    }
-
-    .toast.show {
-
-      opacity: 1;
-
-      transform:
-        translateX(-50%)
-        translateY(0);
-    }
-
-
-    /* FOOTER */
-
-    footer {
-
-      background: #111827;
-
-      color: white;
-
-      text-align: center;
-
-      padding: 35px 15px;
-    }
-
-    footer p {
-
-      color: #9ca3af;
-
-      font-size: 12px;
-
-      margin-top: 5px;
-    }
-
-
-    /* MOBILE */
-
-    @media(max-width:900px) {
-
-      .products {
-
-        grid-template-columns:
-          repeat(3,1fr);
-      }
-
-      .categories {
-
-        grid-template-columns:
-          repeat(4,1fr);
-      }
-    }
-
-
-    @media(max-width:600px) {
-
-      .header {
-
-        height: 64px;
-      }
-
-      .products {
-
-        grid-template-columns:
-          repeat(2,1fr);
-
-        gap: 11px;
-      }
-
-      .categories {
-
-        grid-template-columns:
-          repeat(4,1fr);
-
-        gap: 7px;
-      }
-
-      .category {
-
-        padding: 11px 3px;
-      }
-
-      .category-icon {
-
-        font-size: 21px;
-      }
-
-      .category strong {
-
-        font-size: 10px;
-      }
-
-      .image {
-
-        height: 160px;
-      }
-
-      .grid {
-
-        grid-template-columns:
-          1fr;
-      }
-
-      .hero {
-
-        padding: 40px 15px 50px;
-      }
-
-      .search button {
-
-        padding: 0 14px;
-      }
-    }
-
-  </style>
+</style>
 
 </head>
 
@@ -791,1257 +965,1562 @@
 <body>
 
 
-<!-- HEADER -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-<header>
-
-  <div class="header">
+<header class="header">
 
     <div class="logo">
-
-      <div class="logo-icon">
-        🛍️
-      </div>
-
-      <div>
-        Virexo
-        <span>Market</span>
-      </div>
-
+        🩺
     </div>
 
+    <h1>
+        <span>TABIBK</span>
+        | حجز موعد طبي
+    </h1>
 
-    <button
-      class="sell-btn"
-      onclick="openSell()">
-
-      ➕ بيع سلعة
-
-    </button>
-
-  </div>
+    <p>
+        احجز موعدك مع طبيبك بسهولة وسرعة
+    </p>
 
 </header>
 
 
-
-<!-- HERO -->
-
-<section class="hero">
-
-  <h1>
-
-    سوقك الإلكتروني
-    <strong>في الجزائر 🇩🇿</strong>
-
-  </h1>
-
-  <p>
-
-    بيع واشري بسهولة مع Virexo Market
-
-  </p>
-
-
-  <div class="search">
-
-    <input
-      id="search"
-      type="search"
-      placeholder="قلب على سيارة، هاتف، ملابس..."
-      oninput="filterProducts()"
-    >
-
-    <button
-      onclick="filterProducts()">
-
-      🔎 بحث
-
-    </button>
-
-  </div>
-
-</section>
-
-
-
-<!-- MAIN -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main class="container">
 
-
-  <!-- CATEGORIES -->
-
-  <div class="categories">
-
-    <button
-      class="category active"
-      onclick="setCategory('الكل',this)">
-
-      <div class="category-icon">
-        🏪
-      </div>
-
-      <strong>الكل</strong>
-
-    </button>
+<div class="card">
 
 
-    <button
-      class="category"
-      onclick="setCategory('سيارات',this)">
+<!-- ================= FORM ================= -->
 
-      <div class="category-icon">
-        🚗
-      </div>
-
-      <strong>سيارات</strong>
-
-    </button>
+<div id="bookingForm">
 
 
-    <button
-      class="category"
-      onclick="setCategory('هواتف',this)">
-
-      <div class="category-icon">
-        📱
-      </div>
-
-      <strong>هواتف</strong>
-
-    </button>
-
-
-    <button
-      class="category"
-      onclick="setCategory('إلكترونيات',this)">
-
-      <div class="category-icon">
-        💻
-      </div>
-
-      <strong>إلكترونيات</strong>
-
-    </button>
-
-
-    <button
-      class="category"
-      onclick="setCategory('ملابس',this)">
-
-      <div class="category-icon">
-        👕
-      </div>
-
-      <strong>ملابس</strong>
-
-    </button>
-
-
-    <button
-      class="category"
-      onclick="setCategory('أثاث',this)">
-
-      <div class="category-icon">
-        🛋️
-      </div>
-
-      <strong>أثاث</strong>
-
-    </button>
-
-
-    <button
-      class="category"
-      onclick="setCategory('عقارات',this)">
-
-      <div class="category-icon">
-        🏠
-      </div>
-
-      <strong>عقارات</strong>
-
-    </button>
-
-
-    <button
-      class="category"
-      onclick="setCategory('أخرى',this)">
-
-      <div class="category-icon">
-        📦
-      </div>
-
-      <strong>أخرى</strong>
-
-    </button>
-
-  </div>
-
-
-
-  <!-- TITLE -->
-
-  <div class="title">
+<div class="section-title">
 
     <h2>
-      🔥 أحدث الإعلانات
+        📋 معلومات الحجز
     </h2>
 
-    <div
-      id="count"
-      class="count">
+    <div class="gold-line"></div>
+
+</div>
+
+
+<!-- PATIENT -->
+
+<div class="form-group">
+
+<label>
+    👤 اسم المريض
+    <span class="required">*</span>
+</label>
+
+<input
+    type="text"
+    id="patientName"
+    placeholder="أدخل الاسم الكامل"
+    autocomplete="name"
+>
+
+</div>
+
+
+<!-- PHONE -->
+
+<div class="form-group">
+
+<label>
+    📱 رقم الهاتف
+    <span class="required">*</span>
+</label>
+
+<input
+    type="tel"
+    id="patientPhone"
+    placeholder="مثال: 0550123456"
+    inputmode="tel"
+>
+
+</div>
+
+
+<!-- SPECIALTY -->
+
+<div class="form-group">
+
+<label>
+    🩺 التخصص الطبي
+    <span class="required">*</span>
+</label>
+
+<select id="specialty"
+onchange="loadDoctors()">
+
+<option value="">
+    اختر التخصص
+</option>
+
+<option value="طب عام">
+    🩺 طب عام
+</option>
+
+<option value="طب الأطفال">
+    👶 طب الأطفال
+</option>
+
+<option value="طب الأسنان">
+    🦷 طب الأسنان
+</option>
+
+<option value="أمراض القلب">
+    ❤️ أمراض القلب
+</option>
+
+<option value="الأمراض الجلدية">
+    🧴 الأمراض الجلدية
+</option>
+
+<option value="العيون">
+    👁️ العيون
+</option>
+
+<option value="الأنف والأذن والحنجرة">
+    👂 الأنف والأذن والحنجرة
+</option>
+
+<option value="أمراض النساء والتوليد">
+    🤰 أمراض النساء والتوليد
+</option>
+
+<option value="العظام والمفاصل">
+    🦴 العظام والمفاصل
+</option>
+
+<option value="أمراض الجهاز الهضمي">
+    🩻 أمراض الجهاز الهضمي
+</option>
+
+<option value="أمراض المسالك البولية">
+    🧑‍⚕️ أمراض المسالك البولية
+</option>
+
+<option value="الطب النفسي">
+    🧠 الطب النفسي
+</option>
+
+<option value="أخرى">
+    ➕ أخرى
+</option>
+
+</select>
+
+</div>
+
+
+<!-- DOCTOR -->
+
+<div
+    class="form-group"
+    id="doctorSelectGroup"
+    style="display:none"
+>
+
+<label>
+    👨‍⚕️ اختر الطبيب
+    <span class="required">*</span>
+</label>
+
+<select
+    id="doctorSelect"
+    onchange="showDoctor()"
+>
+
+<option value="">
+    اختر الطبيب
+</option>
+
+</select>
+
+</div>
+
+
+<!-- DOCTOR CARD -->
+
+<div
+    class="doctor-box"
+    id="doctorBox"
+>
+
+<div class="doctor-top">
+
+    <div class="doctor-avatar">
+        👨‍⚕️
     </div>
 
-  </div>
+    <div class="doctor-info">
 
+        <h3 id="doctorDisplayName">
+            -
+        </h3>
 
+        <p id="doctorDisplaySpecialty">
+            -
+        </p>
 
-  <!-- FILTERS -->
-
-  <div class="filters">
-
-    <select
-      id="wilaya"
-      onchange="filterProducts()">
-
-      <option value="">
-        كل الولايات
-      </option>
-
-      <option>غليزان</option>
-      <option>وهران</option>
-      <option>الجزائر</option>
-      <option>مستغانم</option>
-      <option>معسكر</option>
-      <option>الشلف</option>
-      <option>تيارت</option>
-      <option>تلمسان</option>
-      <option>سيدي بلعباس</option>
-
-    </select>
-
-
-    <select
-      id="sort"
-      onchange="filterProducts()">
-
-      <option value="new">
-        الأحدث
-      </option>
-
-      <option value="low">
-        الأرخص
-      </option>
-
-      <option value="high">
-        الأغلى
-      </option>
-
-    </select>
-
-  </div>
-
-
-
-  <!-- PRODUCTS -->
-
-  <div
-    id="products"
-    class="products">
-  </div>
-
-
-  <div
-    id="empty"
-    class="empty">
-
-    <div class="empty-icon">
-      🔍
     </div>
 
-    <h3>
-      لا توجد إعلانات
-    </h3>
+</div>
 
-    <p>
-      جرب البحث بكلمة أخرى.
-    </p>
 
-  </div>
+<div class="doctor-meta">
+
+    <span class="badge rating"
+    id="doctorRating">
+        ⭐ -
+    </span>
+
+    <span class="badge"
+    id="doctorExperience">
+        🎓 -
+    </span>
+
+    <span class="badge"
+    id="doctorClinic">
+        🏥 -
+    </span>
+
+</div>
+
+</div>
+
+
+<!-- DATE TIME -->
+
+<div class="row">
+
+<div class="form-group">
+
+<label>
+    📅 تاريخ الموعد
+    <span class="required">*</span>
+</label>
+
+<input
+    type="date"
+    id="appointmentDate"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+    🕐 وقت الموعد
+    <span class="required">*</span>
+</label>
+
+<select id="appointmentTime">
+
+<option value="">
+    اختر الوقت
+</option>
+
+<option>08:00</option>
+<option>08:30</option>
+<option>09:00</option>
+<option>09:30</option>
+<option>10:00</option>
+<option>10:30</option>
+<option>11:00</option>
+<option>11:30</option>
+<option>14:00</option>
+<option>14:30</option>
+<option>15:00</option>
+<option>15:30</option>
+<option>16:00</option>
+<option>16:30</option>
+<option>17:00</option>
+<option>17:30</option>
+<option>18:00</option>
+<option>18:30</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<!-- TYPE -->
+
+<div class="form-group">
+
+<label>
+    📋 نوع الموعد
+</label>
+
+<select id="appointmentType">
+
+<option>
+    فحص واستشارة
+</option>
+
+<option>
+    متابعة
+</option>
+
+<option>
+    استشارة أولية
+</option>
+
+<option>
+    فحص دوري
+</option>
+
+</select>
+
+</div>
+
+
+<!-- NOTES -->
+
+<div class="form-group">
+
+<label>
+    📝 ملاحظات إضافية
+</label>
+
+<textarea
+    id="notes"
+    placeholder="اكتب أي ملاحظة تريد إرسالها للطبيب..."
+></textarea>
+
+</div>
+
+
+<!-- QUICK INFO -->
+
+<div class="quick-info">
+
+<div class="quick-item">
+
+<strong>⚡</strong>
+
+<span>
+حجز سريع
+</span>
+
+</div>
+
+
+<div class="quick-item">
+
+<strong>🔒</strong>
+
+<span>
+بيانات آمنة
+</span>
+
+</div>
+
+
+<div class="quick-item">
+
+<strong>💬</strong>
+
+<span>
+واتساب
+</span>
+
+</div>
+
+</div>
+
+
+<!-- INFO -->
+
+<div class="info-box">
+
+<div class="info-item">
+👤 <strong>المريض:</strong>
+سيتم إرسال الاسم ورقم الهاتف.
+</div>
+
+<div class="info-item">
+👨‍⚕️ <strong>الطبيب:</strong>
+اختر الطبيب المناسب من القائمة.
+</div>
+
+<div class="info-item">
+📅 <strong>الموعد:</strong>
+اختر اليوم والساعة المناسبة.
+</div>
+
+<div class="info-item">
+💬 <strong>التأكيد:</strong>
+سيتم إرسال الطلب عبر واتساب.
+</div>
+
+</div>
+
+
+<!-- BUTTON -->
+
+<button
+    class="submit-btn"
+    id="submitBtn"
+    onclick="sendBooking()"
+>
+
+📲 إرسال طلب الحجز عبر واتساب
+
+</button>
+
+
+<div class="whatsapp">
+
+رقم استقبال الحجوزات:
+
+<span>
+0671 99 58 31
+</span>
+
+</div>
+
+
+</div>
+
+
+<!-- =====================================================
+     SUCCESS
+===================================================== -->
+
+<div
+    class="success"
+    id="successBox"
+>
+
+<div class="success-icon">
+    ✓
+</div>
+
+
+<h2>
+    تم تجهيز طلب الحجز 🎉
+</h2>
+
+
+<p>
+    رقم الحجز الخاص بك:
+</p>
+
+
+<div class="booking-number">
+
+<strong id="bookingNumber">
+    TAB-000000
+</strong>
+
+</div>
+
+
+<p>
+سيتم فتح واتساب لإرسال الطلب للطبيب.
+</p>
+
+
+<div class="actions">
+
+<button
+    class="action-btn new-btn"
+    onclick="newBooking()"
+>
+➕ حجز جديد
+</button>
+
+
+<button
+    class="action-btn copy-btn"
+    onclick="copyBookingNumber()"
+>
+📋 نسخ الرقم
+</button>
+
+</div>
+
+</div>
+
+
+</div>
 
 </main>
 
 
+<footer class="footer">
 
-<!-- SELL MODAL -->
-
-<div
-  id="sellModal"
-  class="modal">
-
-  <div class="modal-box">
-
-
-    <div class="modal-head">
-
-      <h2>
-        ➕ أضف سلعتك
-      </h2>
-
-      <button
-        class="close"
-        onclick="closeSell()">
-
-        ×
-
-      </button>
-
-    </div>
-
-
-    <form
-      id="sellForm"
-      class="form">
-
-
-      <div class="group">
-
-        <label>
-          اسم السلعة *
-        </label>
-
-        <input
-          id="name"
-          class="control"
-          placeholder="مثال: iPhone 13"
-          required
-        >
-
-      </div>
-
-
-
-      <div class="grid">
-
-
-        <div class="group">
-
-          <label>
-            السعر *
-          </label>
-
-          <input
-            id="price"
-            class="control"
-            type="number"
-            min="0"
-            placeholder="85000"
-            required
-          >
-
-        </div>
-
-
-        <div class="group">
-
-          <label>
-            التصنيف *
-          </label>
-
-          <select
-            id="category"
-            class="control"
-            required>
-
-            <option value="">
-              اختر
-            </option>
-
-            <option>سيارات</option>
-            <option>هواتف</option>
-            <option>إلكترونيات</option>
-            <option>ملابس</option>
-            <option>أثاث</option>
-            <option>عقارات</option>
-            <option>أخرى</option>
-
-          </select>
-
-        </div>
-
-      </div>
-
-
-
-      <div class="grid">
-
-
-        <div class="group">
-
-          <label>
-            الولاية *
-          </label>
-
-          <select
-            id="productWilaya"
-            class="control"
-            required>
-
-            <option value="">
-              اختر الولاية
-            </option>
-
-            <option>غليزان</option>
-            <option>وهران</option>
-            <option>الجزائر</option>
-            <option>مستغانم</option>
-            <option>معسكر</option>
-            <option>الشلف</option>
-            <option>تيارت</option>
-            <option>تلمسان</option>
-            <option>سيدي بلعباس</option>
-
-          </select>
-
-        </div>
-
-
-        <div class="group">
-
-          <label>
-            البلدية
-          </label>
-
-          <input
-            id="commune"
-            class="control"
-            placeholder="مثال: غليزان"
-          >
-
-        </div>
-
-      </div>
-
-
-
-      <div class="group">
-
-        <label>
-          اسم البائع *
-        </label>
-
-        <input
-          id="seller"
-          class="control"
-          placeholder="اسمك"
-          required
-        >
-
-      </div>
-
-
-
-      <div class="group">
-
-        <label>
-          رقم الهاتف *
-        </label>
-
-        <input
-          id="phone"
-          class="control"
-          type="tel"
-          placeholder="0550000000"
-          required
-        >
-
-      </div>
-
-
-
-      <div class="group">
-
-        <label>
-          وصف السلعة
-        </label>
-
-        <textarea
-          id="description"
-          class="control"
-          placeholder="اكتب تفاصيل السلعة...">
-        </textarea>
-
-      </div>
-
-
-
-      <button
-        class="submit"
-        type="submit">
-
-        🚀 نشر السلعة
-
-      </button>
-
-    </form>
-
-  </div>
-
-</div>
-
-
-
-<!-- TOAST -->
-
-<div
-  id="toast"
-  class="toast">
-</div>
-
-
-
-<footer>
-
-  <strong>
-    🛍️ Virexo Market
-  </strong>
-
-  <p>
-    سوق إلكتروني جزائري مفتوح للجميع 🇩🇿
-  </p>
-
-  <p>
-    V2.0
-  </p>
+© 2026 TABIBK — نظام حجز المواعيد الطبية
 
 </footer>
 
 
+<div
+    class="toast"
+    id="toast"
+></div>
+
 
 <script>
 
+/* =====================================================
+   TABIBK V2
+   DOCTORS DATABASE
+=====================================================
 
-let allProducts = [];
+   ⭐ لتعديل الأطباء:
+   غيّر الاسم والخبرة والتقييم والعيادة فقط.
 
-let currentCategory = "الكل";
+   مثال:
 
+   "طب عام":[
+      {
+          name:"اسم الطبيب",
+          experience:"10 سنوات خبرة",
+          rating:"4.9",
+          clinic:"اسم العيادة"
+      }
+   ]
 
-
-/* =========================
-   LOAD PRODUCTS
-========================= */
-
-async function loadProducts() {
-
-  try {
-
-    const response =
-      await fetch("/api/products");
-
-
-    const data =
-      await response.json();
+===================================================== */
 
 
-    if (!data.success) {
+const doctors = {
 
-      throw new Error(
-        "API Error"
-      );
+"طب عام":[
+
+    {
+        name:"د. أحمد بن علي",
+        experience:"12 سنة خبرة",
+        rating:"4.9",
+        clinic:"عيادة الشفاء"
+    },
+
+    {
+        name:"د. محمد قادري",
+        experience:"8 سنوات خبرة",
+        rating:"4.8",
+        clinic:"عيادة الأمل"
+    }
+
+],
+
+
+"طب الأطفال":[
+
+    {
+        name:"د. سارة بن عيسى",
+        experience:"10 سنوات خبرة",
+        rating:"4.9",
+        clinic:"عيادة الطفل السعيد"
+    },
+
+    {
+        name:"د. أمين مرابط",
+        experience:"7 سنوات خبرة",
+        rating:"4.8",
+        clinic:"مركز الأطفال"
+    }
+
+],
+
+
+"طب الأسنان":[
+
+    {
+        name:"د. ياسين بن عمر",
+        experience:"11 سنة خبرة",
+        rating:"4.9",
+        clinic:"مركز ابتسامة"
+    },
+
+    {
+        name:"د. ليلى منصوري",
+        experience:"6 سنوات خبرة",
+        rating:"4.8",
+        clinic:"عيادة اللؤلؤة"
+    }
+
+],
+
+
+"أمراض القلب":[
+
+    {
+        name:"د. خالد بوعلام",
+        experience:"15 سنة خبرة",
+        rating:"4.9",
+        clinic:"مركز القلب الطبي"
+    },
+
+    {
+        name:"د. نادية رحماني",
+        experience:"12 سنة خبرة",
+        rating:"4.8",
+        clinic:"عيادة القلب"
+    }
+
+],
+
+
+"الأمراض الجلدية":[
+
+    {
+        name:"د. مريم قاسمي",
+        experience:"9 سنوات خبرة",
+        rating:"4.9",
+        clinic:"عيادة البشرة"
+    },
+
+    {
+        name:"د. سامي حداد",
+        experience:"7 سنوات خبرة",
+        rating:"4.7",
+        clinic:"مركز الجلدية"
+    }
+
+],
+
+
+"العيون":[
+
+    {
+        name:"د. عبد الرحمن سعيد",
+        experience:"14 سنة خبرة",
+        rating:"4.9",
+        clinic:"مركز النور للعيون"
+    },
+
+    {
+        name:"د. إيمان بوزيان",
+        experience:"9 سنوات خبرة",
+        rating:"4.8",
+        clinic:"عيادة البصر"
+    }
+
+],
+
+
+"الأنف والأذن والحنجرة":[
+
+    {
+        name:"د. هشام كمال",
+        experience:"13 سنة خبرة",
+        rating:"4.9",
+        clinic:"مركز ENT الطبي"
+    },
+
+    {
+        name:"د. ريم خالدي",
+        experience:"8 سنوات خبرة",
+        rating:"4.8",
+        clinic:"عيادة السمع"
+    }
+
+],
+
+
+"أمراض النساء والتوليد":[
+
+    {
+        name:"د. نسرين بوعبدالله",
+        experience:"12 سنة خبرة",
+        rating:"4.9",
+        clinic:"عيادة الأم والطفل"
+    },
+
+    {
+        name:"د. فاطمة زروقي",
+        experience:"10 سنوات خبرة",
+        rating:"4.8",
+        clinic:"مركز الحياة"
+    }
+
+],
+
+
+"العظام والمفاصل":[
+
+    {
+        name:"د. كريم بلحاج",
+        experience:"16 سنة خبرة",
+        rating:"4.9",
+        clinic:"مركز العظام"
+    },
+
+    {
+        name:"د. وليد شريف",
+        experience:"9 سنوات خبرة",
+        rating:"4.8",
+        clinic:"عيادة الحركة"
+    }
+
+],
+
+
+"أمراض الجهاز الهضمي":[
+
+    {
+        name:"د. مراد بن سالم",
+        experience:"13 سنة خبرة",
+        rating:"4.9",
+        clinic:"مركز الجهاز الهضمي"
+    },
+
+    {
+        name:"د. حنان بوزيد",
+        experience:"8 سنوات خبرة",
+        rating:"4.8",
+        clinic:"عيادة الهضم"
+    }
+
+],
+
+
+"أمراض المسالك البولية":[
+
+    {
+        name:"د. طارق منصور",
+        experience:"12 سنة خبرة",
+        rating:"4.9",
+        clinic:"مركز المسالك"
+    },
+
+    {
+        name:"د. سميرة عابد",
+        experience:"9 سنوات خبرة",
+        rating:"4.8",
+        clinic:"عيادة الحياة"
+    }
+
+],
+
+
+"الطب النفسي":[
+
+    {
+        name:"د. يوسف مرزوق",
+        experience:"14 سنة خبرة",
+        rating:"4.9",
+        clinic:"مركز التوازن النفسي"
+    },
+
+    {
+        name:"د. هدى بن داود",
+        experience:"10 سنوات خبرة",
+        rating:"4.8",
+        clinic:"عيادة الراحة"
+    }
+
+],
+
+
+"أخرى":[
+
+    {
+        name:"طبيب متخصص",
+        experience:"خبرة مهنية",
+        rating:"4.8",
+        clinic:"عيادة طبية"
+    },
+
+    {
+        name:"طبيب متخصص 2",
+        experience:"خبرة مهنية",
+        rating:"4.7",
+        clinic:"مركز طبي"
+    }
+
+]
+
+};
+
+
+/* =====================================================
+   DATE MINIMUM
+===================================================== */
+
+function setMinDate(){
+
+    const today =
+        new Date();
+
+    const yyyy =
+        today.getFullYear();
+
+    const mm =
+        String(
+            today.getMonth()+1
+        ).padStart(2,"0");
+
+    const dd =
+        String(
+            today.getDate()
+        ).padStart(2,"0");
+
+    const todayString =
+        `${yyyy}-${mm}-${dd}`;
+
+    document
+        .getElementById("appointmentDate")
+        .min = todayString;
+
+}
+
+
+/* =====================================================
+   LOAD DOCTORS
+===================================================== */
+
+function loadDoctors(){
+
+    const specialty =
+        document
+        .getElementById("specialty")
+        .value;
+
+    const doctorSelect =
+        document
+        .getElementById("doctorSelect");
+
+    const doctorGroup =
+        document
+        .getElementById("doctorSelectGroup");
+
+    const doctorBox =
+        document
+        .getElementById("doctorBox");
+
+
+    doctorSelect.innerHTML =
+        '<option value="">اختر الطبيب</option>';
+
+    doctorBox.style.display =
+        "none";
+
+
+    if(!specialty){
+
+        doctorGroup.style.display =
+            "none";
+
+        return;
 
     }
 
 
-    allProducts =
-      data.products || [];
+    const list =
+        doctors[specialty] || [];
 
 
-    filterProducts();
+    list.forEach(
+        (doctor,index)=>{
 
+            const option =
+                document.createElement("option");
 
-  } catch(error) {
+            option.value =
+                index;
 
-    console.error(error);
+            option.textContent =
+                doctor.name;
 
-    showToast(
-      "❌ تعذر الاتصال بالسيرفر"
-    );
+            doctorSelect.appendChild(
+                option
+            );
 
-  }
-
-}
-
-
-
-/* =========================
-   RENDER
-========================= */
-
-function renderProducts(products) {
-
-  const container =
-    document.getElementById("products");
-
-  const empty =
-    document.getElementById("empty");
-
-  const count =
-    document.getElementById("count");
-
-
-  container.innerHTML = "";
-
-
-  count.textContent =
-    products.length + " إعلان";
-
-
-  if (!products.length) {
-
-    empty.style.display =
-      "block";
-
-    return;
-
-  }
-
-
-  empty.style.display =
-    "none";
-
-
-  products.forEach(product => {
-
-
-    const card =
-      document.createElement("div");
-
-
-    card.className =
-      "product";
-
-
-    card.innerHTML = `
-
-      <div class="image">
-
-        ${
-          product.image
-
-          ?
-
-          `<img
-             src="${product.image}"
-             alt="${escapeHTML(product.name)}"
-           >`
-
-          :
-
-          `<div class="placeholder">
-             ${icon(product.category)}
-           </div>`
         }
-
-      </div>
-
-
-      <div class="product-body">
-
-        <div class="product-name">
-
-          ${escapeHTML(product.name)}
-
-        </div>
+    );
 
 
-        <div class="price">
-
-          ${formatPrice(product.price)}
-
-        </div>
+    doctorGroup.style.display =
+        "block";
 
 
-        <div class="location">
+    if(list.length === 1){
 
-          📍 ${escapeHTML(product.wilaya)}
+        doctorSelect.value = "0";
 
-          ${
-            product.commune
-            ?
-            " - " +
-            escapeHTML(product.commune)
-            :
-            ""
-          }
+        showDoctor();
 
-        </div>
-
-
-        <button
-          class="details"
-          onclick="showProduct(${product.id})">
-
-          👁️ عرض التفاصيل
-
-        </button>
-
-      </div>
-
-    `;
-
-
-    container.appendChild(card);
-
-  });
+    }
 
 }
 
 
+/* =====================================================
+   SHOW DOCTOR
+===================================================== */
 
-/* =========================
-   FILTER
-========================= */
+function showDoctor(){
 
-function filterProducts() {
+    const specialty =
+        document
+        .getElementById("specialty")
+        .value;
+
+    const index =
+        document
+        .getElementById("doctorSelect")
+        .value;
+
+    const doctorBox =
+        document
+        .getElementById("doctorBox");
 
 
-  const search =
+    if(index === ""){
+
+        doctorBox.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    const doctor =
+        doctors[specialty][index];
+
+
     document
-      .getElementById("search")
-      .value
-      .toLowerCase()
-      .trim();
+        .getElementById("doctorDisplayName")
+        .textContent =
+            doctor.name;
 
 
-  const wilaya =
     document
-      .getElementById("wilaya")
-      .value;
+        .getElementById("doctorDisplaySpecialty")
+        .textContent =
+            specialty;
 
 
-  const sort =
     document
-      .getElementById("sort")
-      .value;
+        .getElementById("doctorRating")
+        .textContent =
+            "⭐ " + doctor.rating;
 
 
-  let result =
-    allProducts.filter(product => {
+    document
+        .getElementById("doctorExperience")
+        .textContent =
+            "🎓 " + doctor.experience;
 
 
-      const text = `
-
-        ${product.name}
-
-        ${product.category}
-
-        ${product.wilaya}
-
-        ${product.commune}
-
-        ${product.description}
-
-      `.toLowerCase();
+    document
+        .getElementById("doctorClinic")
+        .textContent =
+            "🏥 " + doctor.clinic;
 
 
-      return (
-
-        (!search ||
-          text.includes(search))
-
-        &&
-
-        (
-          currentCategory === "الكل"
-          ||
-          product.category ===
-          currentCategory
-        )
-
-        &&
-
-        (
-          !wilaya ||
-          product.wilaya === wilaya
-        )
-
-      );
-
-    });
-
-
-
-  if(sort === "low") {
-
-    result.sort(
-      (a,b) =>
-        Number(a.price) -
-        Number(b.price)
-    );
-
-  }
-
-  else if(sort === "high") {
-
-    result.sort(
-      (a,b) =>
-        Number(b.price) -
-        Number(a.price)
-    );
-
-  }
-
-  else {
-
-    result.sort(
-      (a,b) =>
-        Number(b.date) -
-        Number(a.date)
-    );
-
-  }
-
-
-  renderProducts(result);
+    doctorBox.style.display =
+        "block";
 
 }
 
 
+/* =====================================================
+   GET SELECTED DOCTOR
+===================================================== */
 
-/* =========================
-   CATEGORY
-========================= */
+function getSelectedDoctor(){
 
-function setCategory(category, element) {
+    const specialty =
+        document
+        .getElementById("specialty")
+        .value;
 
-  currentCategory =
-    category;
-
-
-  document
-    .querySelectorAll(".category")
-    .forEach(button => {
-
-      button.classList
-        .remove("active");
-
-    });
+    const index =
+        document
+        .getElementById("doctorSelect")
+        .value;
 
 
-  element.classList
-    .add("active");
+    if(
+        !specialty ||
+        index === ""
+    ){
+
+        return null;
+
+    }
 
 
-  filterProducts();
+    return doctors[specialty][index];
 
 }
 
 
+/* =====================================================
+   BOOKING NUMBER
+===================================================== */
 
-/* =========================
-   ADD PRODUCT
-========================= */
+function generateBookingNumber(){
 
-document
-  .getElementById("sellForm")
-  .addEventListener(
-    "submit",
-    async function(event) {
+    const random =
+        Math.floor(
+            100000 +
+            Math.random()*900000
+        );
 
+    return "TAB-" + random;
 
-      event.preventDefault();
-
-
-      const product = {
-
-        name:
-          document
-            .getElementById("name")
-            .value
-            .trim(),
-
-        price:
-          Number(
-            document
-              .getElementById("price")
-              .value
-          ),
-
-        category:
-          document
-            .getElementById("category")
-            .value,
-
-        wilaya:
-          document
-            .getElementById(
-              "productWilaya"
-            )
-            .value,
-
-        commune:
-          document
-            .getElementById(
-              "commune"
-            )
-            .value
-            .trim(),
-
-        seller:
-          document
-            .getElementById(
-              "seller"
-            )
-            .value
-            .trim(),
-
-        phone:
-          document
-            .getElementById(
-              "phone"
-            )
-            .value
-            .trim(),
-
-        description:
-          document
-            .getElementById(
-              "description"
-            )
-            .value
-            .trim()
-
-      };
+}
 
 
-      try {
+/* =====================================================
+   DATE FORMAT
+===================================================== */
 
+function formatDate(date){
 
-        const response =
-          await fetch(
-            "/api/products",
+    try{
+
+        const d =
+            new Date(
+                date + "T00:00:00"
+            );
+
+        return d.toLocaleDateString(
+            "ar-DZ",
             {
-
-              method: "POST",
-
-              headers: {
-                "Content-Type":
-                  "application/json"
-              },
-
-              body:
-                JSON.stringify(product)
-
+                weekday:"long",
+                year:"numeric",
+                month:"long",
+                day:"numeric"
             }
-          );
-
-
-        const data =
-          await response.json();
-
-
-        if(!response.ok) {
-
-          throw new Error(
-            data.message ||
-            "حدث خطأ"
-          );
-
-        }
-
-
-        showToast(
-          "🎉 تم نشر السلعة بنجاح"
         );
 
+    }catch(e){
 
-        this.reset();
-
-
-        closeSell();
-
-
-        await loadProducts();
-
-
-      }
-
-      catch(error) {
-
-        console.error(error);
-
-        showToast(
-          "❌ " + error.message
-        );
-
-      }
-
-    }
-  );
-
-
-
-/* =========================
-   PRODUCT DETAILS
-========================= */
-
-async function showProduct(id) {
-
-
-  try {
-
-
-    const response =
-      await fetch(
-        "/api/products/" + id
-      );
-
-
-    const data =
-      await response.json();
-
-
-    if(!response.ok) {
-
-      throw new Error(
-        data.message
-      );
+        return date;
 
     }
 
-
-    const product =
-      data.product;
+}
 
 
-    alert(
+/* =====================================================
+   PHONE VALIDATION
+===================================================== */
 
-      "🛍️ " +
-      product.name +
+function validAlgerianPhone(phone){
 
-      "\n\n" +
+    const clean =
+        phone.replace(
+            /\s/g,
+            ""
+        );
 
-      "💰 السعر: " +
-      formatPrice(product.price) +
-
-      "\n\n" +
-
-      "📍 المكان: " +
-      product.wilaya +
-
-      (
-        product.commune
-        ?
-        " - " +
-        product.commune
-        :
-        ""
-      ) +
-
-      "\n\n" +
-
-      "👤 البائع: " +
-      product.seller +
-
-      "\n📞 الهاتف: " +
-      product.phone +
-
-      "\n\n" +
-
-      (
-        product.description ||
-        "لا يوجد وصف"
-      )
-
+    return /^0[5-7][0-9]{8}$/.test(
+        clean
     );
 
-
-  }
-
-  catch(error) {
-
-    showToast(
-      "❌ " + error.message
-    );
-
-  }
-
 }
 
 
-
-/* =========================
-   OPEN SELL
-========================= */
-
-function openSell() {
-
-  document
-    .getElementById("sellModal")
-    .classList
-    .add("show");
-
-}
-
-
-
-/* =========================
-   CLOSE SELL
-========================= */
-
-function closeSell() {
-
-  document
-    .getElementById("sellModal")
-    .classList
-    .remove("show");
-
-}
-
-
-
-/* =========================
-   ICON
-========================= */
-
-function icon(category) {
-
-  const icons = {
-
-    "سيارات": "🚗",
-
-    "هواتف": "📱",
-
-    "إلكترونيات": "💻",
-
-    "ملابس": "👕",
-
-    "أثاث": "🛋️",
-
-    "عقارات": "🏠",
-
-    "أخرى": "📦"
-
-  };
-
-
-  return icons[category] ||
-         "🛍️";
-
-}
-
-
-
-/* =========================
-   PRICE
-========================= */
-
-function formatPrice(price) {
-
-  return Number(price)
-    .toLocaleString("fr-DZ")
-    + " دج";
-
-}
-
-
-
-/* =========================
-   ESCAPE
-========================= */
-
-function escapeHTML(value) {
-
-  const div =
-    document.createElement("div");
-
-  div.textContent =
-    value || "";
-
-  return div.innerHTML;
-
-}
-
-
-
-/* =========================
+/* =====================================================
    TOAST
-========================= */
+===================================================== */
 
-let toastTimer;
+function showToast(message){
 
+    const toast =
+        document.getElementById("toast");
 
-function showToast(message) {
+    toast.textContent =
+        message;
 
-  const toast =
-    document.getElementById(
-      "toast"
-    );
-
-
-  toast.textContent =
-    message;
+    toast.classList.add("show");
 
 
-  toast.classList
-    .add("show");
-
-
-  clearTimeout(
-    toastTimer
-  );
-
-
-  toastTimer =
     setTimeout(
-      () => {
-
-        toast.classList
-          .remove("show");
-
-      },
-      2500
+        ()=>{
+            toast.classList.remove("show");
+        },
+        2500
     );
 
 }
 
 
+/* =====================================================
+   SEND BOOKING
+===================================================== */
 
-/* =========================
-   CLOSE MODAL OUTSIDE
-========================= */
+function sendBooking(){
 
-document
-  .getElementById("sellModal")
-  .addEventListener(
-    "click",
-    function(event) {
+    const name =
+        document
+        .getElementById("patientName")
+        .value.trim();
 
-      if(
-        event.target ===
-        this
-      ) {
 
-        closeSell();
+    const phone =
+        document
+        .getElementById("patientPhone")
+        .value.trim();
 
-      }
+
+    const specialty =
+        document
+        .getElementById("specialty")
+        .value;
+
+
+    const doctor =
+        getSelectedDoctor();
+
+
+    const date =
+        document
+        .getElementById("appointmentDate")
+        .value;
+
+
+    const time =
+        document
+        .getElementById("appointmentTime")
+        .value;
+
+
+    const type =
+        document
+        .getElementById("appointmentType")
+        .value;
+
+
+    const notes =
+        document
+        .getElementById("notes")
+        .value.trim();
+
+
+    /* ================= VALIDATION ================= */
+
+    if(!name){
+
+        showToast(
+            "⚠️ أدخل اسم المريض"
+        );
+
+        document
+        .getElementById("patientName")
+        .focus();
+
+        return;
 
     }
-  );
 
 
+    if(!validAlgerianPhone(phone)){
 
-/* =========================
-   START
-========================= */
+        showToast(
+            "⚠️ أدخل رقم هاتف جزائري صحيح"
+        );
 
-loadProducts();
+        document
+        .getElementById("patientPhone")
+        .focus();
+
+        return;
+
+    }
+
+
+    if(!specialty){
+
+        showToast(
+            "⚠️ اختر التخصص الطبي"
+        );
+
+        return;
+
+    }
+
+
+    if(!doctor){
+
+        showToast(
+            "⚠️ اختر الطبيب"
+        );
+
+        return;
+
+    }
+
+
+    if(!date){
+
+        showToast(
+            "⚠️ اختر تاريخ الموعد"
+        );
+
+        return;
+
+    }
+
+
+    if(!time){
+
+        showToast(
+            "⚠️ اختر وقت الموعد"
+        );
+
+        return;
+
+    }
+
+
+    /* ================= BOOKING ================= */
+
+    const bookingNumber =
+        generateBookingNumber();
+
+
+    const formattedDate =
+        formatDate(date);
+
+
+    /* ================= SAVE DATA ================= */
+
+    localStorage.setItem(
+        "tabibk_patient_name",
+        name
+    );
+
+    localStorage.setItem(
+        "tabibk_patient_phone",
+        phone
+    );
+
+    localStorage.setItem(
+        "tabibk_last_booking",
+        bookingNumber
+    );
+
+
+    /* ================= WHATSAPP ================= */
+
+    const message =
+
+`🏥 *TABIBK — طلب حجز موعد*
+
+━━━━━━━━━━━━━━━━
+
+🆔 *رقم الحجز*
+${bookingNumber}
+
+━━━━━━━━━━━━━━━━
+
+👤 *معلومات المريض*
+
+الاسم: ${name}
+📱 الهاتف: ${phone}
+
+━━━━━━━━━━━━━━━━
+
+🩺 *الاختصاص*
+
+${specialty}
+
+👨‍⚕️ *الطبيب*
+
+${doctor.name}
+
+🏥 العيادة:
+${doctor.clinic}
+
+━━━━━━━━━━━━━━━━
+
+📅 *الموعد*
+
+التاريخ:
+${formattedDate}
+
+🕐 الساعة:
+${time}
+
+📋 نوع الموعد:
+${type}
+
+━━━━━━━━━━━━━━━━
+
+📝 *ملاحظات*
+
+${notes || "لا توجد ملاحظات"}
+
+━━━━━━━━━━━━━━━━
+
+🔔 *الرجاء تأكيد أو رفض الموعد*
+
+شكراً لاستخدام TABIBK 🩺`;
+
+
+    const whatsappNumber =
+        "213671995831";
+
+
+    const whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(
+            message
+        );
+
+
+    /* ================= SUCCESS ================= */
+
+    document
+        .getElementById("bookingNumber")
+        .textContent =
+            bookingNumber;
+
+
+    document
+        .getElementById("bookingForm")
+        .style.display =
+            "none";
+
+
+    document
+        .getElementById("successBox")
+        .style.display =
+            "block";
+
+
+    /* ================= SOUND ================= */
+
+    playSuccessSound();
+
+
+    /* ================= OPEN WHATSAPP ================= */
+
+    setTimeout(
+        ()=>{
+            window.location.href =
+                whatsappURL;
+        },
+        900
+    );
+
+}
+
+
+/* =====================================================
+   SUCCESS SOUND
+===================================================== */
+
+function playSuccessSound(){
+
+    try{
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        const ctx =
+            new AudioContext();
+
+        const oscillator =
+            ctx.createOscillator();
+
+        const gain =
+            ctx.createGain();
+
+
+        oscillator.frequency.value =
+            700;
+
+        oscillator.type =
+            "sine";
+
+
+        gain.gain.setValueAtTime(
+            .15,
+            ctx.currentTime
+        );
+
+
+        gain.gain.exponentialRampToValueAtTime(
+            .001,
+            ctx.currentTime + .5
+        );
+
+
+        oscillator.connect(gain);
+
+        gain.connect(
+            ctx.destination
+        );
+
+
+        oscillator.start();
+
+        oscillator.stop(
+            ctx.currentTime + .5
+        );
+
+    }catch(e){}
+
+}
+
+
+/* =====================================================
+   COPY BOOKING NUMBER
+===================================================== */
+
+function copyBookingNumber(){
+
+    const number =
+        document
+        .getElementById("bookingNumber")
+        .textContent;
+
+
+    if(
+        navigator.clipboard
+    ){
+
+        navigator.clipboard
+        .writeText(number)
+        .then(
+            ()=>{
+                showToast(
+                    "✅ تم نسخ رقم الحجز"
+                );
+            }
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   NEW BOOKING
+===================================================== */
+
+function newBooking(){
+
+    document
+        .getElementById("successBox")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("bookingForm")
+        .style.display =
+        "block";
+
+
+    document
+        .getElementById("specialty")
+        .value = "";
+
+
+    document
+        .getElementById("doctorSelectGroup")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("doctorBox")
+        .style.display =
+        "none";
+
+
+    document
+        .getElementById("appointmentDate")
+        .value = "";
+
+
+    document
+        .getElementById("appointmentTime")
+        .value = "";
+
+
+    document
+        .getElementById("appointmentType")
+        .selectedIndex = 0;
+
+
+    document
+        .getElementById("notes")
+        .value = "";
+
+}
+
+
+/* =====================================================
+   LOAD SAVED PATIENT
+===================================================== */
+
+function loadSavedPatient(){
+
+    const name =
+        localStorage.getItem(
+            "tabibk_patient_name"
+        );
+
+
+    const phone =
+        localStorage.getItem(
+            "tabibk_patient_phone"
+        );
+
+
+    if(name){
+
+        document
+        .getElementById("patientName")
+        .value =
+            name;
+
+    }
+
+
+    if(phone){
+
+        document
+        .getElementById("patientPhone")
+        .value =
+            phone;
+
+    }
+
+}
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+setMinDate();
+
+loadSavedPatient();
 
 
 </script>
 
 </body>
 
-        </html>
+</html>
